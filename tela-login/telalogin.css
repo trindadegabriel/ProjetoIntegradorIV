@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFE5D9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+@keyframes twinklespinning {
+    0% { transform: rotate(226deg) scale(1); }
+    50% { transform: rotate(226deg) scale(0.7); }
+    100% { transform: rotate(226deg) scale(1); }
+}
+
+.heart {
+    width: 250px;
+    height: 250px;
+    margin-left: 70%;
+    margin-bottom: 10%;
+    margin-top: 5%;
+    position: absolute;
+    transform: rotate(226deg);
+    animation: twinklespinning 3s linear infinite;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    background-color: #ff1a1a;
+}
+
+.box::after {
+    width: 150px;
+    height: 150px;
+    content: "";
+    border-radius: 50%;
+    background-color: #ff1a1a;
+    position: absolute;
+    left: 75px;
+}
+
+.box::before {
+    width: 150px;
+    height: 150px;
+    content: "";
+    border-radius: 50%;
+    background-color: #ff1a1a;
+    position: absolute;
+    top: 75px;
+}
+
+.text-below-heart {
+    text-align: center;
+    color: #FE251B;
+    font-size: 60px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login-container {
+    background-color: #54B9CC;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.login-container h2 {
+    margin-top: 0;
+    color: #54B9CC;
+}
+
+.login-container input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFE5D9;
+}
+
+.login-container button {
+    background-color: #1f788a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    color: #FE251B;
+    border-bottom: 2px solid #FE251B; /* Cor laranja */
+    outline: none;
+}
+
+.login-container button:hover {
+    background-color: #FE251B;
+}
