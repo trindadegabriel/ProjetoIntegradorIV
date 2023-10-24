@@ -9,61 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: relative;
-}
-
-@keyframes twinklespinning {
-    0% { transform: rotate(226deg) scale(1); }
-    50% { transform: rotate(226deg) scale(0.7); }
-    100% { transform: rotate(226deg) scale(1); }
-}
-
-.heart {
-    width: 250px;
-    height: 250px;
-    margin-left: 70%;
-    margin-bottom: 10%;
-    margin-top: 5%;
-    position: absolute;
-    transform: rotate(226deg);
-    animation: twinklespinning 3s linear infinite;
-}
-
-.box {
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    background-color: #ff1a1a;
-}
-
-.box::after {
-    width: 150px;
-    height: 150px;
-    content: "";
-    border-radius: 50%;
-    background-color: #ff1a1a;
-    position: absolute;
-    left: 75px;
-}
-
-.box::before {
-    width: 150px;
-    height: 150px;
-    content: "";
-    border-radius: 50%;
-    background-color: #ff1a1a;
-    position: absolute;
-    top: 75px;
-}
-
-.text-below-heart {
-    text-align: center;
-    color: #FE251B;
-    font-size: 60px;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;    
 }
 
 .circle1 {
@@ -77,6 +23,7 @@ body {
     margin-top:30%;
     opacity: 0.5;
     top: 75px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .circle2 {
@@ -86,10 +33,10 @@ body {
     border-radius: 50%;
     background-color: #ff1a1a;
     position: absolute;
-    margin-right: 80%;
-    margin-bottom:80%;
+    margin-right: 30%;
     opacity: 0.5;
-    top: 75px;
+    bottom: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .circle3 {
@@ -99,27 +46,31 @@ body {
     border-radius: 50%;
     background-color: #ff1a1a;
     position: absolute;
-    margin-right: 80%;
+    right: -100px;
     margin-top:30%;
     opacity: 0.5;
-    top: 75px;
+    top: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.login-container {
+.login-container-cadastro {
     background-color: #54B9CC;
     border: 1px solid #ccc;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    width: 1000px;
+    height: 550px;
+    position: absolute;
 }
 
-.login-container h2 {
+.login-container h1 {
     margin-top: 0;
     color: #FFE5D9;
 }
 
-.login-container input {
+.login-container-cadastro input {
     width: 80%;
     padding: 10px;
     margin: 10px 0;
@@ -128,7 +79,7 @@ body {
     background-color: #FFE5D9;
 }
 
-#btnentrar {
+#btncadastrar {
     background-color: #1f788a;
     color: #fff;
     border: none;
@@ -139,7 +90,7 @@ body {
     transition: background-color 0.2s;
 }
 
-#btncadastro {
+#btnvoltar {
     background-color: #47b3c8;
     color: #fff;
     border: none;
@@ -149,18 +100,17 @@ body {
     transition: background-color 0.2s;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.login-container-cadastro input[type="text"],
+.login-container-cadsatro input[type="password"],
+.login-container-cadastro input[type="email"] {
     color: #FE251B;
-    border-bottom: 2px solid #FE251B; /* Cor laranja */
     outline: none;
 }
 
-#btnentrar:hover {
+#btncadastrar:hover {
     background-color: #FE251B;
 }
 
-#btncadastro:hover {
+#btnvoltar:hover {
     background-color: #FE251B;
 }
-
