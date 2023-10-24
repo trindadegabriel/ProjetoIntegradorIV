@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Informações de Doação</title>
+        <link rel="stylesheet" type="text/css" href="infos_doacao.css">
+        <script src="infos_doacao.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="parte-container" id="esquerda">
+                <p id="texto-niveis-sangue">Níveis de Sangue</p>
+                <div class="grafico-nivel-sangue">
+                    <div class="linhas">
+                        <div class="linha" id="linha-zero"></div>
+                        <div class="linha" id="linha-vinte">
+                            <p class="pct-linha">20%</p>
+                        </div>
+                        <div class="linha" id="linha-quarenta">
+                            <p class="pct-linha">40%</p>
+                        </div>
+                        <div class="linha" id="linha-sessenta">
+                            <p class="pct-linha">60%</p>
+                        </div>
+                        <div class="linha" id="linha-oitenta">
+                            <p class="pct-linha">80%</p>
+                        </div>
+                        <div class="linha" id="linha-cem">
+                            <p class="pct-linha">100%</p>
+                        </div>
+                    </div>
+                    <div class="barra" id="a-pos">
+                        <p>A+</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="a-neg">
+                        <p>A-</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="b-pos">
+                        <p>B+</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="b-neg">
+                        <p>B-</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="ab-pos">
+                        <p>AB+</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="ab-neg">
+                        <p>AB-</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="o-pos">
+                        <p>O+</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                    <div class="barra" id="o-neg">
+                        <p>O-</p>
+                        <span class="porcentagem">0%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="parte-container" id="direita">
+                <div class="contador-dias-restantes">
+                    <p valor="365">365 Dias Restantes</p>
+                </div>
+            </div>
+        </div>
+        <div id="baixo">
+            <p id="texto-locais-doacao">Locais de doação de sangue na sua região</p>
+            <div class="bancos-de-sangue">
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+                <div class="bancos-teste" onclick="carregarGrafico()">
+                    <h2>Hemocentro De Campinas/ Unicamp</h2>
+                    <p>R Carlos Chagas, 480 - Cidade Universitaria - Campinas, SP</p>
+                    <p>(19)35218705 / 0800 7228432</p>
+                    <p>www.hemocentro.unicamp.br</p>
+                    <p>segunda a sábado, inclusive feriados das 7h30/15h00h</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

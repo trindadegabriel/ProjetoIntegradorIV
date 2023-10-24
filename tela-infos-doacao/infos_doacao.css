@@ -1,0 +1,214 @@
+/*
+vermelho - #FE251B
+creme - #FFE5D9
+azul - #54B9CC
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+body{
+    background-color: #54B9CC;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60vh;
+}
+
+.parte-container{
+    flex: 1;
+    flex-basis: 0;
+    padding: 30px;
+    margin: 20px;
+    background-color: #FFE5D9;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+/*---------- GRÁFICO DE NÍVEIS DE SANGUE (PARTE ESQUERDA) ----------*/
+
+#texto-niveis-sangue{
+    color: #FE251B;
+    font-size: x-large;
+    margin-top: 0;
+    margin-bottom: 5%;
+}
+
+.grafico-nivel-sangue {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+
+.barra{
+    width: calc((70% - 14px) / 8);
+    height: 0;
+    min-height: 30px;
+    background: linear-gradient(to top, #ff362b, #ff0000);
+    margin: 0 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding-bottom: 5px;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    transition: height 1s ease;
+}
+
+.porcentagem{
+    position: absolute;
+    top: -20px;
+    color: #FE251B;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.barra > p{
+    color: #FFE6D9;
+    font-weight: bold;
+    margin: 0; 
+}
+
+.linha{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #54B9CC;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.pct-linha{
+    position: absolute;
+    left: -4.5%;
+}
+
+#linha-cem{
+    top: -2%;
+}
+
+#linha-oitenta{
+    top: 18%;
+}
+
+#linha-sessenta{
+    top: 38%;
+}
+
+#linha-quarenta{
+    top: 58%;
+}
+
+#linha-vinte{
+    top: 78%;
+}
+
+#linha-zero{
+    height: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to top, #5ebacc, #19a8c5);
+}
+
+/*---------- cONTADOR DE DIAS RESTANTES (PARTE DIREITA) ----------*/
+
+.contador-dias-restantes{
+    width: 20vw;
+    height: 20vw;
+    background-color: #54B9CC;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFE5D9;
+    font-size: 24px;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/*---------- BANCOS DE SANGUE NA REGIÃO (PARTE DE BAIXO) ----------*/
+
+#baixo{
+    background-color: #FFE5D9;
+    padding: 30px;
+    margin: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+#texto-locais-doacao{
+    margin: 0;
+    margin-bottom: 5px;
+    color: #FE251B;
+    font-size: x-large;
+}
+
+.bancos-de-sangue{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 38vh;
+    padding: 10px;
+    padding-bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.bancos-teste{
+    min-width: 15%;
+    max-width: 15%;
+    min-height: auto;
+    max-height: auto;
+    margin: 10px;
+    padding: 20px;
+    background-color: #FFE5D9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.bancos-teste:hover {
+    background-color: #54B9CC;
+}
+
+.bancos-teste > h2{
+    color: #FE251B;
+    font-size: large;
+    font-weight: 900;
+}
+
+.bancos-teste > p{
+    color: #FE251B;
+    font-size: small;
+}
+
+::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, #ff4f46, #ff0000);
+    border-radius: 10px;
+}
