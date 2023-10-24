@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -61,25 +61,27 @@ body{
     top: 75px;
 }
 
-.text-below-heart {
+.nome-site {
     text-align: center;
-    color: #FE251B;
-    font-size: 50px;
+    color: #ffffff;
+    font-size: 70px;
     position: absolute;
-    top: 15%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+
 .circle1 {
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     content: "";
     border-radius: 50%;
     background-color: #ff1a1a;
     position: absolute;
-    margin-right: 80%;
-    margin-top:30%;
+    margin-right: 90%;
+    margin-top:40%;
     opacity: 0.5;
     top: 75px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -92,15 +94,15 @@ body{
     border-radius: 50%;
     background-color: #ff1a1a;
     position: absolute;
-    margin-right: 30%;
+    margin-right: 70%;
     opacity: 0.5;
     bottom: 600px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .circle3 {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     content: "";
     border-radius: 50%;
     background-color: #ff1a1a;
@@ -179,12 +181,6 @@ body{
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
-}
-
-.sign-in{
-    left: 0;
-    width: 50%;
-    z-index: 2;
 }
 
 .container.active .sign-in{
@@ -283,10 +279,12 @@ body{
 }
 
 #register:hover {
-    background-color: #FE251B;
+    background-color: #e6291f;
+    opacity: 0.8;
 }
 
 #login:hover {
-    background-color: #FE251B;
+    background-color: #e6291f;
+    opacity: 0.8;
 }
 
