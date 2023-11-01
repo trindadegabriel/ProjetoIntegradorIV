@@ -299,7 +299,7 @@ body {
     margin-left: 15px;
     pointer-events: none;
 }
-.evento::after {
+.eventos .evento::after {
     content: "✓";
     position: absolute;
     top: 50%;
@@ -312,10 +312,20 @@ body {
     color: var(--vermelho);
     transform: translateY(-50%);
 }
-.evento:hover::after {
+.eventos .evento:hover::after {
     display: flex;
 }
-.add-evento-wrapper {
+.eventos .sem-evento{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--txt-clr-dark);
+}
+.add-event-wrapper {
     position: absolute;
     bottom: 100px;
     left: 50%;
@@ -327,10 +337,13 @@ body {
     transform: translateX(-50%);
     transition: max-height 0.5s;
 }
-.add-evento-wrapper.ativo {
+.add-event-wrapper .title {
+    color: var(--vermelho);
+}
+.add-event-wrapper.active {
     max-height: 300px;
 }
-.add-header-evento {
+.add-event-header {
     width: 100%;
     height: 50px;
     display: flex;
@@ -340,19 +353,19 @@ body {
     color: var(--azul);
     border-bottom: 1px solid #f5f5f5;
 }
-.add-header-evento .close {
+.add-event-header .close {
+    color: var(--vermelho);
     font-size: 1.5rem;
     cursor: pointer;
 }
-.add-header-evento .close:hover {
-    color: var(--vermelho);
+.add-event-header .close:hover {
+    color: var(--azul);
 }
-.add-header-evento .titulo {
-    color: var(--vermelho);
+.add-event-header .title {
     font-size: 1.2rem;
     font-weight: 500;
 }
-.add-evento-body {
+.add-event-body {
     width: 100%;
     height: 100%;
     display: flex;
@@ -360,7 +373,7 @@ body {
     gap: 5px;
     padding: 20px;
 }
-.add-evento-body .add-evento-input {
+.add-event-body .add-event-input {
     width: 100%;
     height: 40px;
     display: flex;
@@ -368,7 +381,7 @@ body {
     justify-content: space-between;
     gap: 10px;
 }
-.add-evento-body .add-evento-input input {
+.add-event-body .add-event-input input {
     width: 100%;
     height: 100%;
     outline: none;
@@ -379,22 +392,22 @@ body {
     font-weight: 400;
     color: var(--vermelho);
 }
-.add-evento-body .add-evento-input input::placeholder {
+.add-event-body .add-event-input input::placeholder {
     color: #a5a5a5;
 }
-.add-evento-body .add-evento-input input:focus {
-    border-color: var(--azul);
+.add-event-body .add-event-input input:focus {
+    border-color: var(--vermelho);
 }
-.add-evento-body .add-evento-input input:focus::placeholder {
-    columns: var(--vermelho);
+.add-event-body .add-event-input input:focus::placeholder {
+    color: var(--vermelho);
 }
-.add-evento-footer {
+.add-event-footer {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
-.add-evento-btn {
+.add-event-btn {
     height: 40px;
     font-size: 1rem;
     font-weight: 500;
@@ -407,11 +420,11 @@ body {
     padding: 5px 10px;
     border: 1px solid var(--vermelho);
 }
-.add-evento-btn:hover {
+.add-event-btn:hover {
     color: var(--vermelho);
     background-color: transparent;
 }
-.add-evento {
+.add-event {
     position: absolute;
     bottom: 30px;
     right: 30px;
@@ -421,16 +434,76 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    color: var(--txt-clr-dark);
-    border: 2px solid var(--txt-clr-dark);
+    color: #878895;
+    border: 2px solid #878895;
     opacity: 0.5;
+    border-radius: 50%;
     background-color: transparent;
-    border-radius: 50px;
     cursor: pointer;
 }
-.add-evento:hover {
+.add-event:hover {
+    color: var(--vermelho);
+    border-color: var(--vermelho);
     opacity: 1;
 }
 .add-event i {
     pointer-events: none;
+}
+
+/* Responsividade */
+
+@media(max-width: 1000px){
+    body{
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .container {
+        min-height: 100vh;
+        flex-direction: column;
+        border-radius: 0;
+    }
+    .container .esquerda,
+    .container .direita {
+        width: 100%;
+        height: 100%;
+        padding: 20 0;
+    }
+    .calendario::before,
+    .calendario::after {
+        top: 100%;
+        left: 50%;
+        width: 97%;
+        height: 12px;
+        border-radius: 0 0 5px 5px;
+        transform: translateX(-50%);
+    }
+    .calendario::before {
+        width: 94%;
+        top: calc(100% + 12px);
+    }
+    .eventos {
+        padding-bottom: 340px;
+    }
+    .add-event-wrapper {
+        bottom: 100px;
+    }
+}
+@media (max-width: 500px) {
+    .calendario .mes {
+        height: 75px;
+    }
+    .calendario .dias-semana {
+        height: 50px;
+    }
+    .calendario .dias .dia {
+        height: 40px;
+        font-size: 0.8rem;
+    }
+    .calendario .dias .dia.ativo,
+    .calendario .dias .dia.hoje {
+        font-size: 1rem;
+    }
+    .direita .data-hoje{
+        padding: 20px;
+    }
 }
