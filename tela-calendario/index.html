@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+    <link rel="stylesheet" href="style.css">
+    <title>Calendário</title>
+</head>
+<body>
+    <div class="container">
+        <div class="esquerda">
+            <div class="calendario">
+                <div class="mes">
+                    <i class="fa fa-angle-left prev"></i>
+                    <div class="data"></div>
+                    <i class="fa fa-angle-right next"></i>
+                </div>
+                <div class="dias-semana">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Quar</div>
+                    <div>Quin</div>
+                    <div>Sex</div>
+                    <div>Sab</div>
+                </div>
+                <div class="dias">
+                    <!-- Dias adicionados por js-->
+                </div>
+                <div class="ir-para-hoje">
+                    <div class="ir-para">
+                        <input type="text" placeholder="mm/aaaa" class="input-data">
+                        <button class="btn-ir-para">Ir</button>
+                    </div>
+                    <button class="btn-hoje">Hoje</button>
+                </div>
+            </div>
+        </div>
+        <div class="direita">
+            <div class="data-hoje">
+                <div class="dia-evento">Ter</div>
+                <div class="data-evento">24 Outubro 2023</div>
+            </div>
+            <div class="eventos"><!--Adcs por js--></div>
+            <div class="add-evento-wrapper">
+                <div class="add-header-evento">
+                    <div class="titulo">Adicionar Evento</div>
+                    <i class="fas fa-times close"></i>
+                </div>
+                <div class="add-evento-body">
+                    <div class="add-evento-input">
+                        <input type="text" placeholder="Doar Sangue" class="nome-evento">
+                    </div>
+                    <div class="add-evento-input">
+                        <input type="text" placeholder="Horário inicio" class="horario-inicio-evento">
+                    </div>
+                    <div class="add-evento-input">
+                        <input type="text" placeholder="Horário fim" class="horario-fim-evento">
+                    </div>
+                </div>
+                <div class="add-evento-footer">
+                    <button class="add-evento-btn">Adicionar evento</button>
+                </div>
+            </div>
+        </div>
+        <button class="add-evento">
+            <i class="fas fa-plus"></i>
+        </button> 
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
