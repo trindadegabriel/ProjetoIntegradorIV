@@ -9,18 +9,29 @@
 
 </head>
 <body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>4 vidas</h2>
+            <div class="sidebar-links">
+                <a href="../tela-infos-doacao/infos_doacao.html">Dashboard</a>
+                <a href="../main-telas/telalogin.html">Conta</a>
+                <a href="../tela-questionario/questionario.html">Questionário</a>
+                <a href="../tela-mapa/index.html">Mapa</a>
+                <a href="../tela-calendario/index.html">Calendário</a>
+            </div>
+        </div>
     
     <h1>Questionário de Elegibilidade para Doação de Sangue</h1>
     <form action="/submit_questionnaire" method="post">
         <div class="age-wrapper">
             <label for="age">Qual a sua idade?</label><br>
-            <input type="number" id="age" name="age" min="16" max="69" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-             maxlength = "2"> Anos<br><br>
+            <input type="number" id="age" name="age" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+             maxlength = "3"> Anos<br><br>
         </div>
         
         <div class="weight-wrapper">
             <label for="weight">Qual o seu peso em kg?</label><br>
-            <input type="number" id="weight" name="weight" min="50" max="200" oninput="javascript: if (this.value.length > this.maxLength) 
+            <input type="number" id="weight" name="weight" oninput="javascript: if (this.value.length > this.maxLength) 
             this.value = this.value.slice(0, this.maxLength);" maxlength = "3"> Kg<br><br>
         </div>
 
