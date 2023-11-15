@@ -6,6 +6,13 @@ azul - #54B9CC
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body{
     background-color: #54B9CC;
     font-family: 'Poppins', sans-serif;
@@ -43,6 +50,7 @@ body{
     background-color: #FFE5D9;
     padding: 30px;
     margin: 20px;
+    margin-top: 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }

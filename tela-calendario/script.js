@@ -492,8 +492,11 @@ function saveEvents() {
 }
 
 function getEvents() {
-    if (localStorage.getItem("events" != null)) {
-       return;
+    if (localStorage.getItem("events") != null) {
+        var eventsArr = [];
+        eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+        return eventsArr;
     }
-    eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 }
+
+var events = getEvents();

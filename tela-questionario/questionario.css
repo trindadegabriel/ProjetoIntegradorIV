@@ -1,6 +1,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 /* Estilos gerais */
 body {
     background-color: #FFE6D9;
@@ -17,9 +24,6 @@ h1 {
     padding: 20px;
     margin-bottom: 20px;
 }
-
-
-
 
 form {
     max-width: 600px;
@@ -119,7 +123,6 @@ input[type="submit"]:focus {
 
 }
 
-
 /* Estilos para o campo de peso */
 .weight-wrapper {
     width: 50%; /* Ajuste a largura conforme necessário */
@@ -183,5 +186,4 @@ input[type="submit"]:focus {
 
 .sidebar > h2 {
     justify-self: center;
-
 }
