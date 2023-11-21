@@ -18,11 +18,11 @@ body {
     background-color: var(--bg);
 }
 .container {
-    position: relative;
-    width: 1200px;
-    min-height: 850px;
-    margin: 0 auto;
+    width: 80%;
+    height: 70%;
     padding: 5px;
+    margin: 20px;
+    margin-left: 10%;
     color: #fff;
     display: flex;
     border-radius: 10px;
