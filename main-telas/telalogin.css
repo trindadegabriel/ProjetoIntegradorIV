@@ -4,12 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body{
     background-color: #FFE5D9;
-    background: linear-gradient(to right, #ECA796,#FFE5D9);
+    background: linear-gradient(to right, #ECA796, #FFE5D9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +33,6 @@ body{
     transform: rotate(226deg);
     animation: twinklespinning 3s linear infinite;
 }
-
 .box {
     width: 150px;
     height: 150px;
@@ -113,7 +112,6 @@ body{
     top: 50px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-
 .container{
     background-color: #fff;
     border-radius: 30px;
@@ -136,6 +134,13 @@ body{
     font-size: 12px;
 }
 
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
 .container button{
     background-color: #54B9CC;
     color: #fff;
@@ -148,6 +153,9 @@ body{
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+}
+button:hover{
+    background-color: #ff1a1a;
 }
 
 .container button.hidden{
@@ -181,6 +189,12 @@ body{
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
 }
 
 .container.active .sign-in{
@@ -230,7 +244,7 @@ body{
 }
 
 .toggle{
-    background-color: #54B9CC;
+    background-color: #512da8;
     height: 100%;
     background: linear-gradient(to right, #54B9CC, #3fafc6);
     color: #fff;
@@ -241,7 +255,10 @@ body{
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
-
+#login:hover,
+#register:hover {
+    background-color: #ff1a1a;
+}
 .container.active .toggle{
     transform: translateX(50%);
 }
@@ -276,15 +293,5 @@ body{
 
 .container.active .toggle-right{
     transform: translateX(200%);
-}
-
-#register:hover {
-    background-color: #e6291f;
-    opacity: 0.8;
-}
-
-#login:hover {
-    background-color: #e6291f;
-    opacity: 0.8;
 }
 
