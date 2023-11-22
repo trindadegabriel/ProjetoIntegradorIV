@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questionário de Elegibilidade para Doação de Sangue</title>
+        <link rel="stylesheet" type="text/css" href="questionario.css">
+        <script src="questionario.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="sidebar">
+                <h2>4 vidas</h2>
+                <div class="sidebar-links">
+                    <a href="../tela-infos-doacao/infos_doacao.html">Dashboard</a>
+                    <a href="../tela-login/telalogin.html">Conta</a>
+                    <a href="../tela-questionario/questionario.html">Questionário</a>
+                    <a href="../tela-mapa/mapa.html">Mapa</a>
+                    <a href="../tela-calendario/calendario.html">Calendário</a>
+                </div>
+            </div>
+        
+        <h1>Questionário de Elegibilidade para Doação de Sangue</h1>
+        <form action="/submit_questionnaire" method="post">
+            <div class="age-wrapper">
+                <label for="age">Qual a sua idade?</label><br>
+                <input type="number" id="age" name="age" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength = "3"> Anos<br><br>
+            </div>
+            
+            <div class="weight-wrapper">
+                <label for="weight">Qual o seu peso em kg?</label><br>
+                <input type="number" id="weight" name="weight" oninput="javascript: if (this.value.length > this.maxLength) 
+                this.value = this.value.slice(0, this.maxLength);" maxlength = "3"> Kg<br><br>
+            </div>
+
+            <div class="perguntas">
+                <label>Você está se sentindo bem de saúde hoje?</label><br>
+                <input type="radio" id="health_yes" name="health" value="yes">
+                <label for="health_yes">Sim</label><br>
+                <input type="radio" id="health_no" name="health" value="no">
+                <label for="health_no">Não</label><br><br>
+
+                <label>Você costuma dormir no minimo 6 horas por dia?</label><br>
+                <input type="radio" id="sleep_yes" name="sleep" value="yes">
+                <label for="sleep_yes">Sim</label><br>
+                <input type="radio" id="sleep_no" name="sleep" value="no">
+                <label for="sleep_no">Não</label><br><br>
+
+                <label>Você evita alimentos gordurosos?</label><br>
+                <input type="radio" id="food_yes" name="food" value="yes">
+                <label for="food_yes">Sim</label><br>
+                <input type="radio" id="food_no" name="food" value="no">
+                <label for="food_no">Não</label><br><br>
+
+                <label>Você possui um documento original com foto recente, emitido por órgão oficial?</label><br>
+                <input type="radio" id=id_yes name=id value="yes">
+                <label for="id_yes">Sim</label><br>
+                <input type=radio id=id_no name=id value="no">
+                <label for="id_no">Não</label><br><br>
+
+                <label>Você tomou as vacinas obrigatórias?</label><br>
+                <input type=radio id=vaccine_yes name=vaccine value="yes">
+                <label for="vaccine_yes">Sim</label><br>
+                <input type=radio id=vaccine_no name=vaccine value="no">
+                <label for="vaccine_no">Não</label><br><br>
+
+                <label>Você possui alguma doença?</label><br>
+                <input type="radio" id="disease_yes" name="disease" value="yes" onclick="showDescription()">
+                <label for="disease_yes">Sim</label><br>
+                <input type="radio" id="disease_no" name="disease" value="no"onclick="hideDescription()">
+                <label for="disease_no">Não</label><br><br>
+            </div>
+
+            <div id="disease_description" style="display: none;">
+                <label>Se sim, descreva:</label><br>
+                <textarea type="text" id="disease_textbox" name="disease_textbox" rows="4" cols="50" class="large-textarea"></textarea><br><br>
+            </div>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </body>
+</html>
