@@ -12,49 +12,55 @@ import java.nio.file.Paths;
 
 public class Servidor {
 
-    private static final String STATIC_FILES_DIR = "frontend/";
+    private static final String DIRETORIO_ARQUIVOS = "frontend/";
 
     public static void main(String[] args) throws IOException {
         int porta = 3000;
-        ServerSocket serverSocket = new ServerSocket(porta);
+        ServerSocket socketServidor = new ServerSocket(porta);
         System.out.println("Servidor aguardando conexões na porta: " + porta);
 
         try {
-            while (true) {
-                Socket clientSocket = serverSocket.accept();
-                handleRequest(clientSocket);
+            while (true){
+                Socket socketCliente = socketServidor.accept();
+                processarRequisicao(socketCliente);
             }
         } finally {
-            serverSocket.close();
+            socketServidor.close();
         }
     }
 
-    private static void handleRequest(Socket clientSocket) throws IOException {
+    private static void processarRequisicao(Socket socketCliente) throws IOException {
         try (
-            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            OutputStream out = clientSocket.getOutputStream()
+            BufferedReader input = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
+            OutputStream output = socketCliente.getOutputStream()
         ) {
-            String requestLine = in.readLine();
-            if (requestLine != null) {
-                String[] requestComponents = requestLine.split(" ");
-                if (requestComponents.length == 3 && requestComponents[0].equals("GET")) {
-                    String filePathStr = STATIC_FILES_DIR + requestComponents[1];
-                    Path filePath = Paths.get(filePathStr);
+            String linhaRequisicao = input.readLine();
+            if(linhaRequisicao != null){
+                String[] partesRequisicao = linhaRequisicao.split(" ");
+                if(partesRequisicao.length == 3 && partesRequisicao[0].equals("GET")){
+                    String caminhoArquivoStr = DIRETORIO_ARQUIVOS + partesRequisicao[1];
+                    Path caminhoArquivo = Paths.get(caminhoArquivoStr);
 
-                    if (Files.exists(filePath)) {
-                        byte[] fileBytes = Files.readAllBytes(filePath);
-                        out.write("HTTP/1.1 200 OK\r\n".getBytes());
-                        out.write(("Content-Length: " + fileBytes.length + "\r\n").getBytes());
-                        out.write("\r\n".getBytes());
-                        out.write(fileBytes);
+                    if(Files.exists(caminhoArquivo)){
+                        byte[] bytesDoArquivo = Files.readAllBytes(caminhoArquivo);
+                        output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                        output.write(("Content-Length: " + bytesDoArquivo.length + "\r\n").getBytes());
+                        output.write("\r\n".getBytes());
+                        output.write(bytesDoArquivo);
+                    } else if (partesRequisicao[1].equals("/bancos.json")){
+                        byte[] bytesJson = Files.readAllBytes(Paths.get("frontend/tela-infos-doacao/bancos.json"));
+                        output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                        output.write(("Content-Length: " + bytesJson.length + "\r\n").getBytes());
+                        output.write("\r\n".getBytes());
+                        output.write(bytesJson);
                     } else {
-                        out.write("HTTP/1.1 404 Not Found\r\n".getBytes());
-                        out.write("Content-Length: 0\r\n\r\n".getBytes());
+                        output.write("HTTP/1.1 404 Not Found\r\n".getBytes());
+                        output.write("Content-Length: 0\r\n\r\n".getBytes());
                     }
                 }
             }
         } finally {
-            clientSocket.close();
+            socketCliente.close();
         }
     }
 }

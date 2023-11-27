@@ -249,6 +249,8 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    word-wrap: break-word;
+    overflow-y: auto;
 }
 
 .banco-de-sangue:hover {
@@ -264,6 +266,7 @@ body{
 .banco-de-sangue > p{
     color: #FE251B;
     font-size: small;
+    margin-top: 4%;
 }
 
 ::-webkit-scrollbar {

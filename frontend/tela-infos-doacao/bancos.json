@@ -19,7 +19,7 @@
     "Americana Irmandade de Misericórdia Hospital São Francisco": {
       "Município": "Americana",
       "Unidade": "Irmandade de Misericórdia Hospital São Francisco",
-      "Endereço": "Praça Francisco Matarazzo, 60 – Santa Catarina",
+      "Endereço": "Praça Francisco Matarazzo, 60 - Santa Catarina",
       "Telefone": "(19) 3405-4370",
       "Funcionamento": "3ª, 5ª e 6ª das 7:30/11:30hs",
       "Estacionamento": "Não possui estacionamento"
@@ -36,7 +36,7 @@
     "Araraquara Hemonúcleo de Araraquara": {
       "Município": "Araraquara",
       "Unidade": "Hemonúcleo de Araraquara",
-      "Endereço": "Rua Expedicionários do Brasil, 1621 – Centro",
+      "Endereço": "Rua Expedicionários do Brasil, 1621 - Centro",
       "Telefone": "(16) 3301-6102",
       "Site": "www.fcfar.unesp.br",
       "Funcionamento": "2ª a 6ª das 7:00 às 18:00h Sábado das 8:00 às 12:00h",
@@ -106,7 +106,7 @@
     "Botucatu Hemocentro de Botucatu UNESP": {
         "Município": "Botucatu",
         "Unidade": "Hemocentro de Botucatu UNESP",
-        "Endereço": "Campus UNESP – Faculdade de Medicina s/nº. – Distrito de Rubião Júnior",
+        "Endereço": "Campus UNESP - Faculdade de Medicina s/nº. - Distrito de Rubião Júnior",
         "Telefone": "(14) 3811-6041 Ramal 225 ou 240",
         "Site": "www.hemocentro.fmb.unesp.br",
         "Funcionamento": "2ª a 6ª das 7:30/16:30hs Sábado das 7:00/13:00",
@@ -132,7 +132,7 @@
     "Campinas Hemocentro Campinas / Unicamp": {
         "Município": "Campinas",
         "Unidade": "Hemocentro Campinas / Unicamp",
-        "Endereço": "Rua Carlos Chagas, 480 – Cidade Universitária Zeferino Vaz-Barão GeraldoCampinas-SP-CEP: 13083-878",
+        "Endereço": "Rua Carlos Chagas, 480 - Cidade Universitária Zeferino Vaz-Barão GeraldoCampinas-SP-CEP: 13083-878",
         "Telefone": "0800-7228432 (19) 3521-8705",
         "Site": "www.hemocentro.unicamp.br",
         "Funcionamento": "2ª a sábado, inclusive feriados das 7h30/15h00h",
@@ -141,7 +141,7 @@
     "Campinas Posto de Coleta Mário Gatti": {
         "Município": "Campinas",
         "Unidade": "Posto de Coleta Mário Gatti",
-        "Endereço": "Av: Prefeito Faria Lima, 340 – Parque ItáliaCEP 13036-901- Campinas-SP",
+        "Endereço": "Av: Prefeito Faria Lima, 340 - Parque ItáliaCEP 13036-901- Campinas-SP",
         "Telefone": "(19) 3272-5501",
         "Site": "www.hemocentro.unicamp.br",
         "Funcionamento": "segunda à sábado das 08h00 às 15h00",
@@ -150,7 +150,7 @@
     "Campinas Posto de Coleta Boldrini": {
         "Município": "Campinas",
         "Unidade": "Posto de Coleta Boldrini",
-        "Endereço": "Avenida Dr. Gabriel Porto, 1270 – Cidade Universitária.",
+        "Endereço": "Avenida Dr. Gabriel Porto, 1270 - Cidade Universitária.",
         "Telefone": "(19) 3887-5028",
         "Site": "www.hemocentro.unicamp.br",
         "Funcionamento": "2ª a 6ª 8:00/12:00h",
@@ -168,7 +168,7 @@
     "Cubatão Hospital Municipal de Cubatão": {
         "Município": "Cubatão",
         "Unidade": "Hospital Municipal de Cubatão",
-        "Endereço": "Av: Henry Borden s/n – Vila Santa Rosa",
+        "Endereço": "Av: Henry Borden s/n - Vila Santa Rosa",
         "Telefone": "(13) 3362-5400 Ramal 5217",
         "Site": "www.hospitalluizcamargo.com",
         "Funcionamento": "2ª a 6ª das 7:00/14:00h",
@@ -195,7 +195,7 @@
     "Jaú Hemonúcleo Regional de Jaú": {
         "Município": "Jaú",
         "Unidade": "Hemonúcleo Regional de Jaú",
-        "Endereço": "Rua Dona Silvéria, 150 – Centro- Chácara Braz Miraglia-CEP: 17210-080- Jaú-SP",
+        "Endereço": "Rua Dona Silvéria, 150 - Centro- Chácara Braz Miraglia-CEP: 17210-080- Jaú-SP",
         "Telefone": "(14) 3602-1356 (14) 3602-1355 (14) 3602-1358 (14) 3602-1217",
         "Site": "www.amaralcarvalho.org.br",
         "Funcionamento": "De segunda à sexta-feira das 07h:30 às 13h:00 Aos sábados das 07h:30 às 12h:00 Domingos e feriados: fechado",
@@ -301,7 +301,7 @@
     "Ribeirão Preto Banco de Sangue Ribeirão Preto": {
         "Município": "Ribeirão Preto",
         "Unidade": "Banco de Sangue Ribeirão Preto",
-        "Endereço": "Rua Quintino Bocaiúva, 895 – Vila Seixas",
+        "Endereço": "Rua Quintino Bocaiúva, 895 - Vila Seixas",
         "Telefone": "(16) 3610-1515",
         "Site": "www.doesanguegsh.com",
         "Funcionamento": "2ª, 4ª e 6ª das 7:00/14:00h - 3ª e 5ª das 7:00/17:00h Sábado das 7:00/12:00h",
@@ -310,7 +310,7 @@
     "Ribeirão Preto São Francisco Hemoterapia": {
         "Município": "Ribeirão Preto",
         "Unidade": "São Francisco Hemoterapia",
-        "Endereço": "Rua Quintino Bocaiúva, 248 – Higienópolis",
+        "Endereço": "Rua Quintino Bocaiúva, 248 - Higienópolis",
         "Telefone": "(16) 2138-3298",
         "Site": "www.saofrancisco.com.br/hemoterapia",
         "Funcionamento": "2ª a 6ª 7:00/17:00h Sábados e domingos 7:00/11:00h",
@@ -380,7 +380,7 @@
     "São José do Rio Preto Hemocentro de São José do Rio Preto": {
         "Município": "São José do Rio Preto",
         "Unidade": "Hemocentro de São José do Rio Preto",
-        "Endereço": "Avenida Jamil Feres Kfuri nº 80 – Jd. Panorama",
+        "Endereço": "Avenida Jamil Feres Kfuri nº 80 - Jd. Panorama",
         "Telefone": "(17) 3201-5151 (17) 3201-5078",
         "Site": "www.hospitaldebase.com.br",
         "Funcionamento": "2ª a domingo das 7:00/13:00h",
@@ -389,7 +389,7 @@
     "São José dos Campos Hemovalle": {
         "Município": "São José dos Campos",
         "Unidade": "Hemovalle",
-        "Endereço": "Rua: Santa Clara, nº 450 – Vila Adyanna-São José dos Campos-SP-CEP: 12243-630",
+        "Endereço": "Rua: Santa Clara, nº 450 - Vila Adyanna-São José dos Campos-SP-CEP: 12243-630",
         "Telefone": "(12) 3922.0805 (12) 3209.7357 (12) 3209.7367",
         "Funcionamento": "De segunda à sexta-feira das 08h:00 às 11h:30- Sábado: e Domingos: Fechado",
         "Estacionamento": "Motos: Gratuito no próprio banco de sangue Carros: Gratuito no próprio banco de sangue 4 (quatro) vagas e/ou estacionamento Zona Azul paga pelo banco de sangue"
@@ -397,7 +397,7 @@
     "São José dos Campos Serviço de Hemoteraia de São José dos Campos": {
         "Município": "São José dos Campos",
         "Unidade": "Serviço de Hemoteraia de São José dos Campos",
-        "Endereço": "Rua Antonio Saes, 425 – Centro- São José dos Campos-SP",
+        "Endereço": "Rua Antonio Saes, 425 - Centro- São José dos Campos-SP",
         "Telefone": "(12) 3519-3766",
         "Site": "www.shhsjc.com.br",
         "Funcionamento": "Seguanda à Sexta das 07h:00 às 12h:30",
@@ -449,7 +449,7 @@
     "Taubaté Núcleo de Hemoterapia de Taubaté": {
         "Município": "Taubaté",
         "Unidade": "Núcleo de Hemoterapia de Taubaté",
-        "Endereço": "Rua Inglaterra, 190- Jardim das Nações–Taubaté-SP",
+        "Endereço": "Rua Inglaterra, 190- Jardim das Nações-Taubaté-SP",
         "Telefone": "(12) 3624-1273",
         "Site": "www.hemocentro.fmrp.usp.br",
         "Funcionamento": "2ª a 6ª: 8:00 às 17:00h- Sábado: das 08:00 às 12:00 horas",
@@ -462,6 +462,5 @@
         "Telefone": "(14) 3404-5555",
         "Funcionamento": "2ª a 6ª das 7:30/12:00h",
         "Estacionamento": "Gratuito carro"
-    }      
+    }
 }
-  
