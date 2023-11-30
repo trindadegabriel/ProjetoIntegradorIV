@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+    <link rel="stylesheet" href="calendario.css">
+    <title>Calendário</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>4 vidas</h2>
+        <div class="sidebar-links">
+            <a href="../tela-infos-doacao/infos_doacao.html">Dashboard</a>
+            <a href="../tela-login/telalogin.html">Conta</a>
+            <a href="../tela-questionario/questionario.html">Questionário</a>
+            <a href="../tela-mapa/mapa.html">Mapa</a>
+            <a href="../tela-calendario/calendario.html">Calendário</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="esquerda">
+            <div class="calendario">
+                <div class="mes">
+                    <i class="fa fa-angle-left prev"></i>
+                    <div class="data"></div>
+                    <i class="fa fa-angle-right next"></i>
+                </div>
+                <div class="dias-semana">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Quar</div>
+                    <div>Quin</div>
+                    <div>Sex</div>
+                    <div>Sab</div>
+                </div>
+                <div class="dias">
+                    <!-- Dias adicionados por js-->
+                </div>
+                <div class="ir-para-hoje">
+                    <div class="ir-para">
+                        <input type="text" placeholder="mm/aaaa" class="input-data">
+                        <button class="btn-ir-para">Ir</button>
+                    </div>
+                    <button class="btn-hoje">Hoje</button>
+                </div>
+            </div>
+        </div>
+        <div class="direita">
+            <div class="data-hoje">
+                <div class="dia-evento"></div>
+                <div class="data-evento"></div>
+            </div>
+            <div class="eventos">
+                <!--Adcs por js-->
+            </div>
+            <div class="add-event-wrapper">
+                <div class="add-event-header">
+                    <div class="title">Marcar Doação</div>
+                    <i class="fas fa-times close"></i>
+                </div>
+                <div class="add-event-body">
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Doar Sangue" class="event-name">
+                    </div>
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Horário Inicial" class="event-time-from">
+                    </div>
+                    <div class="add-event-input">
+                        <input type="text" placeholder="Horário Final" class="event-time-to">
+                    </div>
+                </div>
+                <div class="add-event-footer">
+                    <button class="add-event-btn">Adicionar evento</button>
+                </div>
+            </div>
+        </div>
+        <button class="add-event">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    
+    <script src="calendario.js"></script>
+</body>
+</html>

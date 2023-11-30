@@ -15,7 +15,6 @@ const inputSenhaCad = document.querySelector('.senha-cadastro');
 const inputEmail = document.querySelector('.email-login');
 const inputSenha = document.querySelector('.senha-login');
 
-
 registerBtn.addEventListener('click', () => {
     container.classList.add("active");
 });
@@ -49,8 +48,6 @@ function cadastrar() {
         console.error('Erro ao cadastrar: ', error);
     });
 };
-
-
 
 formularioCadastro.addEventListener('submit', function(event) {
     event.preventDefault();
