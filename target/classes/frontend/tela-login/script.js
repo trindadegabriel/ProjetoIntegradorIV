@@ -7,13 +7,13 @@ const btnEntrar = document.querySelector('.btn-entrar');
 const btnCadastrar = document.querySelector('.btn-cadastrar');
 
 // Cadastro
-const inputNome = document.querySelector('.nome');
-const inputCPF = document.querySelector('.cpf');
+const inputNomeCad = document.querySelector('.nome');
+const inputCPFCad = document.querySelector('.cpf');
 const inputEmailCad = document.querySelector('.email-cadastro');
 const inputSenhaCad = document.querySelector('.senha-cadastro');
 // Entrar
-const inputEmail = document.querySelector('.email-login');
-const inputSenha = document.querySelector('.senha-login');
+const inputEmailLogin = document.querySelector('.email-login');
+const inputSenhaLogin = document.querySelector('.senha-login');
 
 registerBtn.addEventListener('click', () => {
     container.classList.add("active");
@@ -23,33 +23,63 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
 
-btnEntrar.addEventListener('click', () => {
-    console.log("CLICOU");
-});
-
 function cadastrar() {
-    fetch("http://localhost:8080/",
-    {
-        method: "POST",
-        headers : {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        
-        body: JSON.stringify({
-            nome: inputNome.value,
-            cpf: inputCPF.value,
-            email: inputEmailCad.value,
-            senha: inputSenhaCad.value
-        }),
-    })
-    .then(function (res) {console.log(res)})
-    .catch(function (error) {
-        console.error('Erro ao cadastrar: ', error);
-    });
-};
-
-formularioCadastro.addEventListener('submit', function(event) {
     event.preventDefault();
-    cadastrar();
-});
+    var nome = encodeURIComponent(inputNomeCad.value);
+    var cpf = encodeURIComponent(inputCPFCad.value);
+    var email = encodeURIComponent(inputEmailCad.value);
+    var senha = encodeURIComponent(inputSenhaCad.value);
+
+    var formData = `&nome=${nome}&cpf=${cpf}&email=${email}&senha=${senha}`;
+
+    fetch("/cadastrar", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error. Status: ${response.status}`);
+        }
+        return response.text();
+    })
+    .then(data => {
+        alert("Cadastrado com sucesso");
+        console.log("Cadastro realizado com sucesso: ", data);
+    })
+    .catch(error => {
+        console.log("Erro ao cadastrar: ", error);
+    });
+}
+
+function login() {
+    event.preventDefault();
+    const email = encodeURIComponent(inputEmailLogin.value);
+    const senha = encodeURIComponent(inputSenhaLogin.value);
+
+    const formData = `&email=${email}&senha=${senha}`;
+
+    fetch("/login", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error. Status: ${response.status}`);
+        }
+        return response.text();
+    })
+    .then(data => {
+        alert("Login bem sucedido");
+        console.log("Login bem sucedido: ", data);
+    })
+    .catch(error => {
+        alert("Credenciais inválidas");
+        console.log("Erro ao fazer login: ", error);
+    });
+}
