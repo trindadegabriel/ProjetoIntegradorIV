@@ -4,7 +4,7 @@ import backend.model.Usuario;
 import backend.model.UsuarioDAO;
 
 public class Cadastro {
-    public static void cadastrarUsuario(String nome, String cpf, String email, String senha) {
+    public static boolean cadastrarUsuario(String nome, String cpf, String email, String senha) {
         UsuarioDAO dao = new UsuarioDAO();
         Usuario usuario = new Usuario();
 
@@ -15,8 +15,10 @@ public class Cadastro {
 
         if(dao.inserirUsuario(usuario)) {
             System.out.println("Usuário inserido");
+            return true;
         } else {
             System.out.println("Usuário não inserido");
+            return false;
         }
     }
 }
