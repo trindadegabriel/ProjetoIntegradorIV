@@ -35,5 +35,29 @@ function drop(event) {
     }
 }
 
+function atualizar() {
+    var formulario = document.querySelector('.form-dados');
+    var dados = document.querySelector('.dados-atuais');
+    formulario.style.display = 'block';
+    dados.style.display = 'none';
+}
+function cancelar() {
+    var formulario = document.querySelector('.form-dados');
+    var dados = document.querySelector('.dados-atuais');
+    formulario.style.display = 'none';
+    dados.style.display = 'block';
+}
+function validarNome() {
+    var nome = document.querySelector('.nome').value;
+    var sobrenome = document.querySelector('.sobrenome').value;
+
+    if (nome === "" || sobrenome === "")
+    {
+        alert("Preencha os campos corretamente.");
+    }
 
 
+}
+function cadastrar() {
+    validarNome();
+}

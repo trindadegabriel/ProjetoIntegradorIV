@@ -16,6 +16,33 @@
                 <a href="../tela-calendario/calendario.html">Calendário</a>
             </div>
         </div>
+        <div class="dados">
+            <div class="usuario">
+                <form class="form-dados">
+                    <h2>Atualize seus dados!</h2>
+                    <input type="text" class="nome" placeholder="Nome">
+                    <input type="text" class="sobrenome" placeholder="Sobrenome">
+                    <input type="email" class="email-cadastro" placeholder="Email">
+                    <input type="password" class="senha-cadastro" placeholder="Senha">
+                    <input type="text" class="cidade" placeholder="Cidade">
+                    <input list="Tipos Sanguíneos" type="text" class="tipo-sangue" placeholder="Tipo Sanguíneo">
+                    <input type="text" class="genero" placeholder="Gênero">
+                    <button class="btn-cancelar" onclick="cancelar()">Cancelar</button>
+                    <button class="btn-atualizar" onclick="cadastrar()">Atualizar</button>
+                </form>
+                <div class="dados-atuais">
+                    <h2>Dados cadastrados:</h2>
+                    <h3>Nome</h3>
+                    <h3>Email</h3>
+                    <h3>CPF</h3>
+                    <h3>Tipo Sanguíneo</h3>
+                    <h3>Cidade</h3>
+                    <h3>Gênero</h3>
+                    <button class="btn-atualizar-dados" onclick="atualizar()">Atualizar</button>
+                    
+                </div>
+            </div>
+        </div>
         <div class="recompensas">
             
             <div class="recebidos" id="recompensas-recebidas" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -23,7 +50,7 @@
                 <div class="container-selos">
                     
                     <div class="selos" id="selo1" draggable="true" ondragstart="drag(event)">
-                        <img src="../imagens/selo_1.png" alt="selo1">
+                        <img src="../imagens/selo_1_doacao.png" alt="selo1">
                     </div>
 
                 </div>
