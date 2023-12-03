@@ -10,9 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import backend.controller.Cadastro;
+import backend.controller.Login;
+
 public class Servidor {
 
-    private static final String DIRETORIO_ARQUIVOS = "frontend/";
+    private static final String DIRETORIO_ARQUIVOS = "src/frontend/";
 
     public static void main(String[] args) throws IOException {
         int porta = 3000;
@@ -56,6 +59,92 @@ public class Servidor {
                     } else {
                         output.write("HTTP/1.1 404 Not Found\r\n".getBytes());
                         output.write("Content-Length: 0\r\n\r\n".getBytes());
+                    }
+                }
+                if(partesRequisicao.length == 3 && partesRequisicao[0].equals("POST")){
+                    if(partesRequisicao[1].equals("/cadastrar")) {
+                        int contentLength = 0;
+                        while (!(linhaRequisicao = input.readLine()).isEmpty()) {
+                            if (linhaRequisicao.startsWith("Content-Length:")) {
+                                contentLength = Integer.parseInt(linhaRequisicao.substring(16).trim());
+                            }
+                        }
+
+                        StringBuilder corpoRequisicao = new StringBuilder();
+                        for (int i = 0; i < contentLength; i++) {
+                            corpoRequisicao.append((char) input.read());
+                        }
+
+                        String[] dados = corpoRequisicao.toString().split("&");
+                        String nome = null, cpf = null, email = null, senha = null;
+
+                        for(String dado : dados) {
+                            String[] par = dado.split("=");
+                            if(par.length == 2) {
+                                String chave = par[0];
+                                String valor = par[1].replace("+", " ");
+                                valor = java.net.URLDecoder.decode(valor, "UTF-8");
+
+                                switch(chave) {
+                                    case "nome":
+                                        nome = valor;
+                                        break;
+                                    case "cpf":
+                                        cpf = valor;
+                                        break;
+                                    case "email":
+                                        email = valor;
+                                        break;
+                                    case "senha":
+                                        senha = valor;
+                                        break;
+                                }
+                            }
+                        }
+                        Cadastro.cadastrarUsuario(nome, cpf, email, senha);
+                        output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                        output.write("Content-Length: 0\r\n\r\n".getBytes());
+                    } 
+                    else if(partesRequisicao[1].equals("/login")) {
+                        int contentLength = 0;
+                        while (!(linhaRequisicao = input.readLine()).isEmpty()) {
+                            if (linhaRequisicao.startsWith("Content-Length:")) {
+                                contentLength = Integer.parseInt(linhaRequisicao.substring(16).trim());
+                            }
+                        }
+
+                        StringBuilder corpoRequisicao = new StringBuilder();
+                        for (int i = 0; i < contentLength; i++) {
+                            corpoRequisicao.append((char) input.read());
+                        }
+
+                        String[] dadosLogin = corpoRequisicao.toString().split("&");
+                        String email = null, senha = null;
+
+                        for(String dado : dadosLogin) {
+                            String[] par = dado.split("=");
+                            if(par.length == 2) {
+                                String chave = par[0];
+                                String valor = par[1].replace("+", " ");
+                                valor = java.net.URLDecoder.decode(valor, "UTF-8");
+
+                                switch(chave) {
+                                    case "email":
+                                        email = valor;
+                                        break;
+                                    case "senha":
+                                        senha = valor;
+                                        break;
+                                }
+                            }
+                        }
+                        if(Login.buscarUsuario(email, senha) != null){
+                            output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                            output.write("Content-Length: 0\r\n\r\n".getBytes());
+                        } else {
+                            output.write("HTTP/1.1 401 Unauthorized\r\n".getBytes());
+                            output.write("Content-Length: 0\r\n\r\n".getBytes());
+                        }
                     }
                 }
             }
