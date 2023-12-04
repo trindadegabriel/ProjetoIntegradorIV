@@ -3,15 +3,15 @@ document.getElementById('submit').addEventListener('click', function(event) {
 
     var age = document.getElementById('age').value;
     var weight = document.getElementById('weight').value;
-    var health_no = document.getElementById('health_no').checked;
-    var sleep_no = document.getElementById('sleep_no').checked;
-    var food_yes = document.getElementById('food_yes').checked;
-    var id_no = document.getElementById('id_no').checked;
-    var vaccine_no = document.getElementById('vaccine_no').checked;
-    var diseaseYes = document.getElementById('disease_yes').checked;
+    var health_yes = document.getElementById('health_yes').checked;
+    var sleep_yes = document.getElementById('sleep_yes').checked;
+    var food_no = document.getElementById('food_no').checked;
+    var id_yes = document.getElementById('id_yes').checked;
+    var vaccine_yes = document.getElementById('vaccine_yes').checked;
+    var disease_no = document.getElementById('disease_no').checked;
 
     // Validation of the information
-    if (age >= 16 || age <= 69 && weight > 50 || weight<200 && !diseaseYes && health_no && !sleep_no && !food_yes && !id_no && !vaccine_no) {
+    if (age >= 16 && age <= 69 && weight > 50  && health_yes && sleep_yes && food_no && id_yes && vaccine_yes && disease_no) {
         Swal.fire('Você está elegível para doar sangue.');
     } else {
         Swal.fire('Que pena!\nVocê está inelegível para doar sangue.');
