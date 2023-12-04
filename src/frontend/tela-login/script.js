@@ -92,3 +92,72 @@ function login() {
         console.log("Erro ao fazer login: ", error);
     });
 }
+
+function validarNome() {
+    event.preventDefault();
+    var nome = document.querySelector('.nome').value;
+    var regex = /^[A-Za-z]+$/;
+
+    if (nome === "") {
+        alert("Preencha os campos corretamente.");
+        return false;
+    }
+
+    if (!regex.test(nome)) {
+        alert("Por favor, digite apenas letras no campo de nome.");
+        return false;
+    }
+
+    return true;
+}
+
+function validarEmail(email){
+    var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexEmail.test(email) && email.length > 10;
+}
+
+function validarSenha(senha){
+    return senha.length >= 8;
+}
+
+function validarTipoSanguineo(tipo){
+    const tipos = ["A+", "A-", "B+", "B-", "AB+", "AB+", "O-", "O+"]
+    for(i=0;i<tipos.length;i++){
+        if(tipo == tipos[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
+function validarFormulario(){
+    var nomeValido = validarNome(inputNomeAtt.value);
+    var emailValido = validarEmail(inputEmailAtt.value);
+    var novoEmailValido = validarEmail(inputNovoEmailAtt.value);
+    var senhaValida = validarSenha(inputSenhaAtt.value);
+    var novaSenhaValida = validarSenha(inputNovaSenhaAtt.value);
+    var tipoValido = validarTipoSanguineo(inputTipoSangueAtt.value);
+
+    if(nomeValido && emailValido && novoEmailValido && senhaValida && novaSenhaValida && tipoValido){
+        cadastrar();
+    } else {
+        alert("Preencha os campos corretamente.");
+    }
+}
+
+inputNomeAtt.addEventListener('blur', validarNome);
+inputEmailAtt.addEventListener('blur', function () {
+    validarEmail(inputEmailAtt.value);
+});
+
+inputNovoEmailAtt.addEventListener('blur', function () {
+    validarEmail(inputNovoEmailAtt.value);
+});
+
+inputSenhaAtt.addEventListener('blur', function () {
+    validarSenha(inputSenhaAtt.value);
+});
+
+inputNovaSenhaAtt.addEventListener('blur', function () {
+    validarSenha(inputNovaSenhaAtt.value);
+});

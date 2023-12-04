@@ -97,24 +97,6 @@ function cancelar() {
     dados.style.display = 'block';
 }
 
-function validarNome() {
-    event.preventDefault();
-    var nome = document.querySelector('.nome').value;
-    var regex = /^[A-Za-z]+$/;
-
-    if (nome === "") {
-        alert("Preencha os campos corretamente.");
-        return false;
-    }
-
-    if (!regex.test(nome)) {
-        alert("Por favor, digite apenas letras no campo de nome.");
-        return false;
-    }
-
-    return true;
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     fetch('/dadosusuario', {
         method: "GET",
@@ -131,26 +113,63 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => console.error('Erro ao obter dados do usuário: ', error));
 });
 
-function validarEmail(email) {
+function validarNome(){
+    var regex = /^[A-Za-z]+$/;
+
+    if(nome === ""){
+        return false;
+    }
+
+    if(!regex.test(nome)){
+        alert("Por favor, digite apenas letras no campo de nome.");
+        return false;
+    }
+
+    return true;
+}
+
+function validarEmail(email){
     var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email);
+
+    if(email === ""){
+        return false;
+    }
+
+    if(!regexEmail.test(email) && email.length < 10){
+        alert("Por favor, digite o email corretamente.");
+        return false;
+    }
+    
+    return true;
 }
 
-function validarSenha(senha) {
-    return senha.length >= 8;
+function validarSenha(senha){
+    if(senha.length < 8){
+        alert("Por favor, digite uma senha maior.")
+    }
 }
 
-function validarFormulario() {
-    var nomeValido = validarNome();
+function validarTipoSanguineo(tipo){
+    const tipos = ["A+", "A-", "B+", "B-", "AB+", "AB+", "O-", "O+"]
+    for(i=0;i<tipos.length;i++){
+        if(tipo == tipos[i]){
+            return true;
+        }
+    }
+    alert("Por favor, digite um tipo sanguíneo valido.\nEx: AB+")
+    return false;
+}
+
+function validarFormulario(){
+    var nomeValido = validarNome(inputNomeAtt.value);
     var emailValido = validarEmail(inputEmailAtt.value);
     var novoEmailValido = validarEmail(inputNovoEmailAtt.value);
     var senhaValida = validarSenha(inputSenhaAtt.value);
     var novaSenhaValida = validarSenha(inputNovaSenhaAtt.value);
+    var tipoValido = validarTipoSanguineo(inputTipoSangueAtt.value);
 
-    if (nomeValido && emailValido && novoEmailValido && senhaValida && novaSenhaValida) {
+    if(nomeValido && emailValido && novoEmailValido && senhaValida && novaSenhaValida && tipoValido){
         atualizarDados();
-    } else {
-        alert("Preencha os campos corretamente.");
     }
 }
 
