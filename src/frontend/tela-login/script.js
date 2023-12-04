@@ -48,8 +48,10 @@ function cadastrar() {
     .then(data => {
         alert("Cadastrado com sucesso");
         console.log("Cadastro realizado com sucesso: ", data);
+        window.location.href = "/tela-infos-doacao/infos_doacao.html";
     })
     .catch(error => {
+        alert("Erro ao cadastrar. Usuário já existe.")
         console.log("Erro ao cadastrar: ", error);
     });
 }
@@ -77,6 +79,7 @@ function login() {
     .then(data => {
         alert("Login bem sucedido");
         console.log("Login bem sucedido: ", data);
+        window.location.href = "/tela-infos-doacao/infos_doacao.html";
     })
     .catch(error => {
         alert("Credenciais inválidas");

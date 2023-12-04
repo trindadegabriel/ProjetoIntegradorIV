@@ -17,6 +17,11 @@ public class UsuarioDAO {
     }
 
     public boolean inserirUsuario(Usuario usuario){
+        boolean usuarioJaExiste = buscarUsuarioPorCPFouEmail(usuario.getCpf(), usuario.getEmail());
+        if(usuarioJaExiste){
+            return false;
+        }
+
         Document documento = new Document()
             .append("nome", usuario.getNome())
             .append("cpf", usuario.getCpf())
@@ -61,7 +66,39 @@ public class UsuarioDAO {
     
         Document resultado = database.getCollection("usuarios").find(filtro).first();
     
-        if (resultado != null) {
+        if(resultado != null) {
+            System.out.println("Usuário encontrado\n");
+            Usuario usuarioEncontrado = new Usuario();
+            usuarioEncontrado.setNome(resultado.getString("nome"));
+            usuarioEncontrado.setCpf(resultado.getString("cpf"));
+            usuarioEncontrado.setEmail(resultado.getString("email"));
+            usuarioEncontrado.setSenha(resultado.getString("senha"));
+    
+            return usuarioEncontrado;
+        } else {
+            System.out.println("Usuário não encontrado\n");
+            return null;
+        }
+    }
+
+    public boolean buscarUsuarioPorCPFouEmail(String cpf, String email){
+        Bson filtro = Filters.or(
+            Filters.eq("cpf", cpf),
+            Filters.eq("email", email)
+        );
+
+        Document resultado = database.getCollection("usuarios").find(filtro).first();
+
+        // se achar um usuario retorna true, se não retorna falso
+        return resultado != null;
+    }
+
+    public Usuario buscarUsuarioPorEmail(String email){
+        Bson filtro = Filters.eq("email", email);
+
+        Document resultado = database.getCollection("usuarios").find(filtro).first();
+    
+        if(resultado != null) {
             System.out.println("Usuário encontrado\n");
             Usuario usuarioEncontrado = new Usuario();
             usuarioEncontrado.setNome(resultado.getString("nome"));
