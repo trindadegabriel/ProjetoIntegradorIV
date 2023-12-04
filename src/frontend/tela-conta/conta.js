@@ -88,6 +88,7 @@ function atualizarDados() {
         console.log("Erro ao atualizar: ", error);
     });
 }
+
 function cancelar() {
     event.preventDefault();
     var formulario = document.querySelector('.form-dados');
@@ -95,6 +96,7 @@ function cancelar() {
     formulario.style.display = 'none';
     dados.style.display = 'block';
 }
+
 function validarNome() {
     event.preventDefault();
     var nome = document.querySelector('.nome').value;
@@ -112,35 +114,8 @@ function validarNome() {
 
     return true;
 }
-function validarSobrenome() {
-    event.preventDefault();
-    var nome = document.querySelector('.sobrenome').value;
-    var regex = /^[A-Za-z]+$/;
-
-    if (nome === "") {
-        alert("Preencha os campos corretamente.");
-        return false;
-    }
-
-    if (!regex.test(nome)) {
-        alert("Por favor, digite apenas letras no campo de sobrenome.");
-        return false;
-    }
-
-    return true;
-}
-
-
-function cadastrar() {
-    event.preventDefault();
-    validarNome();
-    validarSobrenome();
-}
 
 document.addEventListener('DOMContentLoaded', function () {
-    var token = pegarCookie('token');
-    var cookie = "token="+token;
-
     fetch('/dadosusuario', {
         method: "GET",
     })
@@ -156,17 +131,42 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => console.error('Erro ao obter dados do usuário: ', error));
 });
 
-function pegarCookie(name) {
-    var valorCookie = null;
-    if(document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                valorCookie = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return valorCookie;
+function validarEmail(email) {
+    var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexEmail.test(email);
 }
+
+function validarSenha(senha) {
+    return senha.length >= 8;
+}
+
+function validarFormulario() {
+    var nomeValido = validarNome();
+    var emailValido = validarEmail(inputEmailAtt.value);
+    var novoEmailValido = validarEmail(inputNovoEmailAtt.value);
+    var senhaValida = validarSenha(inputSenhaAtt.value);
+    var novaSenhaValida = validarSenha(inputNovaSenhaAtt.value);
+
+    if (nomeValido && emailValido && novoEmailValido && senhaValida && novaSenhaValida) {
+        atualizarDados();
+    } else {
+        alert("Preencha os campos corretamente.");
+    }
+}
+
+inputNomeAtt.addEventListener('blur', validarNome);
+inputEmailAtt.addEventListener('blur', function () {
+    validarEmail(inputEmailAtt.value);
+});
+
+inputNovoEmailAtt.addEventListener('blur', function () {
+    validarEmail(inputNovoEmailAtt.value);
+});
+
+inputSenhaAtt.addEventListener('blur', function () {
+    validarSenha(inputSenhaAtt.value);
+});
+
+inputNovaSenhaAtt.addEventListener('blur', function () {
+    validarSenha(inputNovaSenhaAtt.value);
+});
