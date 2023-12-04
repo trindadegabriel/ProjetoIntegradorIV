@@ -49,15 +49,39 @@ function cancelar() {
 }
 function validarNome() {
     var nome = document.querySelector('.nome').value;
-    var sobrenome = document.querySelector('.sobrenome').value;
+    var regex = /^[A-Za-z]+$/;
 
-    if (nome === "" || sobrenome === "")
-    {
+    if (nome === "") {
         alert("Preencha os campos corretamente.");
+        return false;
     }
 
+    if (!regex.test(nome)) {
+        alert("Por favor, digite apenas letras no campo de nome.");
+        return false;
+    }
 
+    return true;
 }
+function validarSobrenome() {
+    var nome = document.querySelector('.sobrenome').value;
+    var regex = /^[A-Za-z]+$/;
+
+    if (nome === "") {
+        alert("Preencha os campos corretamente.");
+        return false;
+    }
+
+    if (!regex.test(nome)) {
+        alert("Por favor, digite apenas letras no campo de sobrenome.");
+        return false;
+    }
+
+    return true;
+}
+
+
 function cadastrar() {
     validarNome();
+    validarSobrenome();
 }
