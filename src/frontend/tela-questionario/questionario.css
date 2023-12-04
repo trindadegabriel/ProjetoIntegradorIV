@@ -16,6 +16,8 @@ body {
     padding: 0;
 }
 
+
+
 h1 {
     font-size: 30px;
     text-align: center;
@@ -23,6 +25,16 @@ h1 {
     color: #fff;
     padding: 20px;
     margin-bottom: 20px;
+}
+h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+    background-image: url('logo.png');
+    background-size: cover;
 }
 
 form {
@@ -36,10 +48,43 @@ form {
 }
 
 label {
-    font-weight: bold;
-    display: block;
-    
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #FF7F7F; 
+    border-radius: 10px; 
+    background-color: #f2f2f2; 
 }
+
+label + #radio {
+    background-color: #f0f0f0; 
+}
+
+
+input[type="radio"] {
+    display: none;
+}
+
+
+input[type="radio"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #FF7F7F;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+input[type="radio"]:checked + label:before {
+    background-color: #FF7F7F;
+}
+
+input[type="radio"] + label:hover:before {
+    background-color: #FF7F7F;
+}
+
 
 input[type="number"],
 input[type="radio"],
@@ -51,7 +96,19 @@ textarea {
     border-color: #54b9CC;
 }
 
-input[type="submit"] {
+input[type="number"]:hover {
+    background-color: #e0e0e0;
+    border-color: #c0392b;
+}
+
+input[type="number"] {
+    border: 2px solid #FF7F7F; 
+    background-color: #f2f2f2; 
+}
+
+
+
+button[type="submit"] {
     background-color: #FE251B;
     color: #fff;
     padding: 10px 20px;
@@ -61,25 +118,27 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-/* Estilização para os radios e checkboxes */
+
 input[type="radio"] {
     margin-right: 5px;
     vertical-align: middle;
+    background-color: #f0f0f0; 
 }
 
-/* Ajuste de margens e espaçamento para a pergunta sobre doenças */
+
 #disease {
     margin-bottom: 20px;
 }
 
+
 /* Estilo para o botão de envio */
-input[type="submit"] {
+button[type="submit"] {
     display: block;
     margin: 20px auto;
 }
 
-input[type="radio"] {
-    display: none;
+input[type="radio"] + label {
+    cursor: pointer;
 }
 
 input[type="radio"] + label:before {
@@ -98,51 +157,30 @@ input[type="radio"]:checked + label:before {
     border-color: #FE251B;
 }
 
-input[type="radio"]:checked:before {
-    background: #FE251B;
-}
 
-/* Estilização para o campo de texto da pergunta sobre doenças */
-textarea {
-    resize: vertical;
-}
-
-/* Estilização para o botão de envio quando o mouse estiver sobre ele */
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: #c0392b;
 }
 
-/* Estilização para o botão de envio quando estiver focado */
-input[type="submit"]:focus {
+button[type="submit"]:focus {
     outline: none;
 }
 
-/* Estilos para o campo de idade */
 .age-wrapper {  
-    width: 50%; /* Ajuste a largura conforme necessário */
+    width: 50%; 
 
 }
 
-/* Estilos para o campo de peso */
+
 .weight-wrapper {
-    width: 50%; /* Ajuste a largura conforme necessário */
+    width: 50%; 
 }
 
-.pergunta {
-    margin-bottom: 10px;
-  }
-  
+
 .botao-radio {
     margin-left: 20px;
   }
   
-.disease_textbox textarea{
-    width: 100%;
-}
-
-.large-textarea {
-    width: 80%; /* Ajuste a largura conforme necessário */
-}
 
 .sidebar {
     position: fixed;
