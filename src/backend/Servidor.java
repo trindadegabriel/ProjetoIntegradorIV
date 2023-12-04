@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import backend.controller.Atualizar;
 import backend.controller.Cadastro;
 import backend.controller.Login;
 import backend.model.GerenciadorDeSessao;
@@ -42,7 +43,7 @@ public class Servidor {
         ) {
             String linhaRequisicao = input.readLine();
             if(linhaRequisicao != null){
-                System.out.println(linhaRequisicao+"\n\n\n");
+                System.out.println("Requisição: " + linhaRequisicao + "\n");
                 String[] partesRequisicao = linhaRequisicao.split(" ");
                 if(partesRequisicao.length == 3 && partesRequisicao[0].equals("GET")){
                     String caminhoArquivoStr = DIRETORIO_ARQUIVOS + partesRequisicao[1];
@@ -62,6 +63,7 @@ public class Servidor {
                         System.out.println(token);
                         if(token != null && GerenciadorDeSessao.verificarSessao(token)) {
                             String dadosUsuario = obterDadosDoUsuario(token);
+                            System.out.println(dadosUsuario);
                             byte[] bytesJson = dadosUsuario.getBytes();
                             output.write("HTTP/1.1 200 OK\r\n".getBytes());
                             output.write(("Content-Length: " + bytesJson.length + "\r\n").getBytes());
@@ -107,7 +109,7 @@ public class Servidor {
                         }
 
                         String[] dados = corpoRequisicao.toString().split("&");
-                        String nome = null, cpf = null, email = null, senha = null;
+                        String nome = null, cpf = null, email = null, senha = null, tipo = null, cidade = null, genero = null;
 
                         for(String dado : dados) {
                             String[] par = dado.split("=");
@@ -129,12 +131,23 @@ public class Servidor {
                                     case "senha":
                                         senha = valor;
                                         break;
+                                    case "tipo":
+                                        tipo = valor;
+                                        break;
+                                    case "cidade":
+                                        cidade = valor;
+                                        break;
+                                    case "genero":
+                                        genero = valor;
+                                        break;
                                 }
                             }
                         }
-                        boolean resultadoCadastro = Cadastro.cadastrarUsuario(nome, cpf, email, senha);
+                        boolean resultadoCadastro = Cadastro.cadastrarUsuario(nome, cpf, email, senha, tipo, cidade, genero);
                         if(resultadoCadastro == true){
+                            String token = GerenciadorDeSessao.iniciarSessao(email);
                             output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                            output.write(("Set-Cookie: token=" + token + "; Path=/\r\n").getBytes());
                             output.write("Content-Length: 0\r\n\r\n".getBytes());
                         } else {
                             output.write("HTTP/1.1 400 Bad Request\r\n".getBytes());
@@ -184,6 +197,68 @@ public class Servidor {
                             output.write("Content-Length: 0\r\n\r\n".getBytes());
                         }
                     }
+                    if(partesRequisicao[1].equals("/atualizar")){
+                        int contentLength = 0;
+                        while(!(linhaRequisicao = input.readLine()).isEmpty()) {
+                            if(linhaRequisicao.startsWith("Content-Length:")) {
+                                contentLength = Integer.parseInt(linhaRequisicao.substring(16).trim());
+                            }
+                        }
+
+                        StringBuilder corpoRequisicao = new StringBuilder();
+                        for (int i = 0; i < contentLength; i++) {
+                            corpoRequisicao.append((char) input.read());
+                        }
+
+                        String[] dados = corpoRequisicao.toString().split("&");
+                        String nome = null, email = null, novoEmail = null, senha = null, novaSenha = null, tipo = null, cidade = null, genero = null;
+
+                        for(String dado : dados) {
+                            String[] par = dado.split("=");
+                            if(par.length == 2) {
+                                String chave = par[0];
+                                String valor = par[1].replace("+", " ");
+                                valor = java.net.URLDecoder.decode(valor, "UTF-8");
+
+                                switch(chave) {
+                                    case "nome":
+                                        nome = valor;
+                                        break;
+                                    case "email":
+                                        email = valor;
+                                        break;
+                                    case "novoemail":
+                                        novoEmail = valor;
+                                        break;
+                                    case "senha":
+                                        senha = valor;
+                                        break;
+                                    case "novasenha":
+                                        novaSenha = valor;
+                                        break;
+                                    case "tipo":
+                                        tipo = valor;
+                                        break;
+                                    case "cidade":
+                                        cidade = valor;
+                                        break;
+                                    case "genero":
+                                        genero = valor;
+                                        break;
+                                }
+                            }
+                        }
+                        boolean resultadoCadastro = Atualizar.atualizarUsuario(nome, email, novoEmail, senha, novaSenha, tipo, cidade, genero);
+                        if(resultadoCadastro == true){
+                            String token = GerenciadorDeSessao.iniciarSessao(novoEmail);
+                            output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                            output.write(("Set-Cookie: token=" + token + "; Path=/\r\n").getBytes());
+                            output.write("Content-Length: 0\r\n\r\n".getBytes());
+                        } else {
+                            output.write("HTTP/1.1 400 Bad Request\r\n".getBytes());
+                            output.write("Content-Length: 0\r\n\r\n".getBytes());
+                        }
+                    }
                 }
             }
         } finally {
@@ -192,29 +267,33 @@ public class Servidor {
     }
 
     private static String obterDadosDoUsuario(String token) {
-        System.out.println("Tentando obter dados: " + token);
         String nome = GerenciadorDeSessao.getNomeToken(token);
         String email = GerenciadorDeSessao.getEmailToken(token);
         String cpf = GerenciadorDeSessao.getCpfToken(token);
+        String tipo = GerenciadorDeSessao.getTipoToken(token);
+        String cidade = GerenciadorDeSessao.getCidadeToken(token);
+        String genero = GerenciadorDeSessao.getGeneroToken(token);
     
-        return "{\"nome\": \"" + nome + "\", \"email\": \"" + email + "\", \"cpf\": \"" + cpf + "\"}";
+        return "{\"nome\": \"" + nome + "\", \"email\": \"" + email + "\", \"cpf\": \"" + cpf + "\", \"tipo\": \"" + tipo + "\", \"cidade\": \"" + cidade + "\", \"genero\": \"" + genero + "\"}";
     }
+    
 
     private static Map<String, Object> verificarToken(BufferedReader input) throws IOException {
         Map<String, Object> resultado = new HashMap<>();
         String linha;
         while ((linha = input.readLine()) != null && !linha.isEmpty()) {
             if (linha.startsWith("Cookie:")) {
-                System.out.println("Achou o cookie");
                 String[] cookies = linha.split(" ");
                 for (String cookie : cookies) {
                     if (cookie.startsWith("token=")) {
                         String token = cookie.substring(6);
-                        System.out.println(token);
                         resultado.put("token", token);
                         resultado.put("valido", GerenciadorDeSessao.verificarSessao(token));
                     }
                 }
+            } else {
+                resultado.put("token", null);
+                resultado.put("valido", false);
             }
         }
         return resultado;

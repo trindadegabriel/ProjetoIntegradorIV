@@ -26,17 +26,27 @@ public class UsuarioDAO {
             .append("nome", usuario.getNome())
             .append("cpf", usuario.getCpf())
             .append("email", usuario.getEmail())
-            .append("senha", usuario.getSenha());
+            .append("senha", usuario.getSenha())
+            .append("tipo-sanguineo", usuario.getTipo())
+            .append("cidade", usuario.getCidade())
+            .append("genero", usuario.getGenero());
 
         InsertOneResult resultado = database.getCollection("usuarios").insertOne(documento);
         return resultado.wasAcknowledged();
     }
 
-    public boolean alterarUsuario(Usuario usuario){
-        Bson filtro = Filters.eq("cpf", usuario.getCpf());
+    public boolean alterarUsuario(Usuario usuario, String email, String senha){
+        Usuario usuarioAntigo = buscarUsuarioPorEmailSenha(email, senha);
+        if(usuarioAntigo == null){
+            return false;
+        }
+        Bson filtro = Filters.eq("cpf", usuarioAntigo.getCpf());
         Document novoUsuario = new Document("$set", new Document("nome",  usuario.getNome())
                                                              .append("email", usuario.getEmail())
-                                                             .append("senha", usuario.getSenha()));
+                                                             .append("senha", usuario.getSenha())
+                                                             .append("tipo-sanguineo", usuario.getTipo())
+                                                             .append("cidade", usuario.getCidade())
+                                                             .append("genero", usuario.getGenero()));
 
         UpdateResult resultado = database.getCollection("usuarios").updateOne(filtro, novoUsuario);
 
@@ -105,6 +115,9 @@ public class UsuarioDAO {
             usuarioEncontrado.setCpf(resultado.getString("cpf"));
             usuarioEncontrado.setEmail(resultado.getString("email"));
             usuarioEncontrado.setSenha(resultado.getString("senha"));
+            usuarioEncontrado.setTipo(resultado.getString("tipo-sanguineo"));
+            usuarioEncontrado.setCidade(resultado.getString("cidade"));
+            usuarioEncontrado.setGenero(resultado.getString("genero"));
     
             return usuarioEncontrado;
         } else {

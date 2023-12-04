@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <title>Questionário de Elegibilidade para Doação de Sangue</title>
         <link rel="stylesheet" type="text/css" href="questionario.css">
-        <script src="questionario.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        
     </head>
     <body>
         <div class="wrapper">
@@ -19,34 +20,36 @@
                 </div>
             </div>
         
+
+            
         <h1>Questionário de Elegibilidade para Doação de Sangue</h1>
         <form action="/submit_questionnaire" method="post">
             <div class="age-wrapper">
                 <label for="age">Qual a sua idade?</label><br>
-                <input type="number" id="age" name="age" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                <input type="number" id="age" name="age" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 maxlength = "3"> Anos<br><br>
             </div>
             
             <div class="weight-wrapper">
                 <label for="weight">Qual o seu peso em kg?</label><br>
-                <input type="number" id="weight" name="weight" oninput="javascript: if (this.value.length > this.maxLength) 
+                <input type="number" id="weight" name="weight" min="0" oninput="javascript: if (this.value.length > this.maxLength) 
                 this.value = this.value.slice(0, this.maxLength);" maxlength = "3"> Kg<br><br>
             </div>
 
             <div class="perguntas">
-                <label>Você está se sentindo bem de saúde hoje?</label><br>
+                <label id="perguntas">Você está se sentindo bem de saúde hoje?</label><br>
                 <input type="radio" id="health_yes" name="health" value="yes">
                 <label for="health_yes">Sim</label><br>
                 <input type="radio" id="health_no" name="health" value="no">
                 <label for="health_no">Não</label><br><br>
 
-                <label>Você costuma dormir no minimo 6 horas por dia?</label><br>
+                <label id="perguntas">Você dorme uma média de pelo menos 6 horas por noite?</label><br>
                 <input type="radio" id="sleep_yes" name="sleep" value="yes">
                 <label for="sleep_yes">Sim</label><br>
                 <input type="radio" id="sleep_no" name="sleep" value="no">
                 <label for="sleep_no">Não</label><br><br>
 
-                <label>Você evita alimentos gordurosos?</label><br>
+                <label>Consome alimentos de alto teor de gordura com frequência?</label><br>
                 <input type="radio" id="food_yes" name="food" value="yes">
                 <label for="food_yes">Sim</label><br>
                 <input type="radio" id="food_no" name="food" value="no">
@@ -54,29 +57,28 @@
 
                 <label>Você possui um documento original com foto recente, emitido por órgão oficial?</label><br>
                 <input type="radio" id=id_yes name=id value="yes">
-                <label for="id_yes">Sim</label><br>
+                <label id="radio" for="id_yes">Sim</label><br>
                 <input type=radio id=id_no name=id value="no">
-                <label for="id_no">Não</label><br><br>
+                <label id="radio" for="id_no">Não</label><br><br>
 
                 <label>Você tomou as vacinas obrigatórias?</label><br>
-                <input type=radio id=vaccine_yes name=vaccine value="yes">
+                <input type=radio id="vaccine_yes" name=vaccine value="yes">
                 <label for="vaccine_yes">Sim</label><br>
-                <input type=radio id=vaccine_no name=vaccine value="no">
+                <input type=radio id="vaccine_no" name=vaccine value="no">
                 <label for="vaccine_no">Não</label><br><br>
 
-                <label>Você possui alguma doença?</label><br>
-                <input type="radio" id="disease_yes" name="disease" value="yes" onclick="showDescription()">
+                <label>Você possui alguma dessas doenças?</label><br>
+                <label id="doenças">doenças hematológicas, cardíacas, renais, pulmonares, hepáticas, autoimunes, diabetes, hipertireoidismo, hanseníase, tuberculose, câncer, sangramentos anormais, convulsões, ou é portador de doenças infecciosas transmissíveis pelo sangue como Doença de Chagas, Hepatite, AIDS, Sífilis.                                                           </label><br>
+                <input type="radio" id="disease_yes" name="disease" value="yes">
                 <label for="disease_yes">Sim</label><br>
-                <input type="radio" id="disease_no" name="disease" value="no"onclick="hideDescription()">
+                <input type="radio" id="disease_no" name="disease" value="no">
                 <label for="disease_no">Não</label><br><br>
             </div>
 
-            <div id="disease_description" style="display: none;">
-                <label>Se sim, descreva:</label><br>
-                <textarea type="text" id="disease_textbox" name="disease_textbox" rows="4" cols="50" class="large-textarea"></textarea><br><br>
-            </div>
 
-            <input type="submit" value="Enviar">
+            <button type="submit" id="submit">Enviar</button>
+            
         </form>
+        <script src="questionario.js"></script>
     </body>
 </html>

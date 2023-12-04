@@ -5,6 +5,9 @@ public class Usuario {
     private String cpf;
     private String email;
     private String senha;
+    private String tipo;
+    private String cidade;
+    private String genero;
 
     public void setNome(String nome){
         this.nome = nome;
@@ -36,5 +39,29 @@ public class Usuario {
 
     public String getSenha(){
         return this.senha;
+    }
+
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
+
+    public String getTipo(){
+        return this.tipo;
+    }
+
+    public void setCidade(String cidade){
+        this.cidade = cidade;
+    }
+
+    public String getCidade(){
+        return this.cidade;
+    }
+
+    public void setGenero(String genero){
+        this.genero = genero;
+    }
+
+    public String getGenero(){
+        return this.genero;
     }
 }

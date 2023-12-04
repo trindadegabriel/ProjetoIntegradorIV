@@ -38,4 +38,25 @@ public class GerenciadorDeSessao {
         String cpf = dao.buscarUsuarioPorEmail(email).getCpf();
         return cpf;
     }
+
+    public static String getTipoToken(String token){
+        String email = getEmailToken(token);
+        UsuarioDAO dao = new UsuarioDAO();
+        String tipo = dao.buscarUsuarioPorEmail(email).getTipo();
+        return tipo;
+    }
+
+    public static String getCidadeToken(String token){
+        String email = getEmailToken(token);
+        UsuarioDAO dao = new UsuarioDAO();
+        String cidade = dao.buscarUsuarioPorEmail(email).getCidade();
+        return cidade;
+    }
+
+    public static String getGeneroToken(String token){
+        String email = getEmailToken(token);
+        UsuarioDAO dao = new UsuarioDAO();
+        String genero = dao.buscarUsuarioPorEmail(email).getGenero();
+        return genero;
+    }
 }

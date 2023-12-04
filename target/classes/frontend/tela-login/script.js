@@ -11,6 +11,9 @@ const inputNomeCad = document.querySelector('.nome');
 const inputCPFCad = document.querySelector('.cpf');
 const inputEmailCad = document.querySelector('.email-cadastro');
 const inputSenhaCad = document.querySelector('.senha-cadastro');
+const inputTipoSangueCad = document.querySelector('.tipo-sanguineo');
+const inputCidadeCad = document.querySelector('.cidade');
+const inputGeneroCad = document.querySelector('.genero');
 // Entrar
 const inputEmailLogin = document.querySelector('.email-login');
 const inputSenhaLogin = document.querySelector('.senha-login');
@@ -29,8 +32,11 @@ function cadastrar() {
     var cpf = encodeURIComponent(inputCPFCad.value);
     var email = encodeURIComponent(inputEmailCad.value);
     var senha = encodeURIComponent(inputSenhaCad.value);
+    var tiposangue = encodeURIComponent(inputTipoSangueCad.value);
+    var cidade = encodeURIComponent(inputCidadeCad.value);
+    var genero = encodeURIComponent(inputGeneroCad.value);
 
-    var formData = `&nome=${nome}&cpf=${cpf}&email=${email}&senha=${senha}`;
+    var formData = `&nome=${nome}&cpf=${cpf}&email=${email}&senha=${senha}&tipo=${tiposangue}&cidade=${cidade}&genero=${genero}`;
 
     fetch("/cadastrar", {
         method: "POST",
