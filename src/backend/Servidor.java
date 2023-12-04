@@ -9,6 +9,8 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import backend.controller.Cadastro;
 import backend.controller.Login;
@@ -40,22 +42,43 @@ public class Servidor {
         ) {
             String linhaRequisicao = input.readLine();
             if(linhaRequisicao != null){
+                System.out.println(linhaRequisicao+"\n\n\n");
                 String[] partesRequisicao = linhaRequisicao.split(" ");
                 if(partesRequisicao.length == 3 && partesRequisicao[0].equals("GET")){
                     String caminhoArquivoStr = DIRETORIO_ARQUIVOS + partesRequisicao[1];
+                    Map<String, Object> tokenInfo = verificarToken(input);
+                    String token = (String) tokenInfo.get("token");
+                    boolean tokenValido = (boolean) tokenInfo.get("valido");
                     Path caminhoArquivo = Paths.get(caminhoArquivoStr);
-
-                    if (!verificarToken(input) && !linhaRequisicao.contains("/tela-login/")) {
+                    
+                    if(!tokenValido && !linhaRequisicao.contains("/tela-login/")) {
                         output.write("HTTP/1.1 302 Found\r\n".getBytes());
                         output.write("Location: /tela-login/telalogin.html\r\n".getBytes());
                         output.write("Content-Length: 0\r\n\r\n".getBytes());
                         return;
                     }
 
+                    if(partesRequisicao[1].equals("/dadosusuario")){
+                        System.out.println(token);
+                        if(token != null && GerenciadorDeSessao.verificarSessao(token)) {
+                            String dadosUsuario = obterDadosDoUsuario(token);
+                            byte[] bytesJson = dadosUsuario.getBytes();
+                            output.write("HTTP/1.1 200 OK\r\n".getBytes());
+                            output.write(("Content-Length: " + bytesJson.length + "\r\n").getBytes());
+                            output.write("\r\n".getBytes());
+                            output.write(bytesJson);
+                        } else {
+                            output.write("HTTP/1.1 401 Unauthorized\r\n".getBytes());
+                            output.write("Content-Length: 0\r\n\r\n".getBytes());
+                        }
+                        return;
+                    }
+                
                     if(Files.exists(caminhoArquivo)){
                         byte[] bytesDoArquivo = Files.readAllBytes(caminhoArquivo);
                         output.write("HTTP/1.1 200 OK\r\n".getBytes());
                         output.write(("Content-Length: " + bytesDoArquivo.length + "\r\n").getBytes());
+                        output.write("Access-Control-Allow-Headers: Authorization\r\n".getBytes());
                         output.write("\r\n".getBytes());
                         output.write(bytesDoArquivo);
                     } else if (partesRequisicao[1].equals("/bancos.json")){
@@ -168,19 +191,32 @@ public class Servidor {
         }
     }
 
-    private static boolean verificarToken(BufferedReader input) throws IOException {
+    private static String obterDadosDoUsuario(String token) {
+        System.out.println("Tentando obter dados: " + token);
+        String nome = GerenciadorDeSessao.getNomeToken(token);
+        String email = GerenciadorDeSessao.getEmailToken(token);
+        String cpf = GerenciadorDeSessao.getCpfToken(token);
+    
+        return "{\"nome\": \"" + nome + "\", \"email\": \"" + email + "\", \"cpf\": \"" + cpf + "\"}";
+    }
+
+    private static Map<String, Object> verificarToken(BufferedReader input) throws IOException {
+        Map<String, Object> resultado = new HashMap<>();
         String linha;
         while ((linha = input.readLine()) != null && !linha.isEmpty()) {
             if (linha.startsWith("Cookie:")) {
+                System.out.println("Achou o cookie");
                 String[] cookies = linha.split(" ");
                 for (String cookie : cookies) {
                     if (cookie.startsWith("token=")) {
                         String token = cookie.substring(6);
-                        return GerenciadorDeSessao.verificarSessao(token);
+                        System.out.println(token);
+                        resultado.put("token", token);
+                        resultado.put("valido", GerenciadorDeSessao.verificarSessao(token));
                     }
                 }
             }
         }
-        return false;
-    }
+        return resultado;
+    }    
 }

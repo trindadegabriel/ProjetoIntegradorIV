@@ -36,18 +36,21 @@ function drop(event) {
 }
 
 function atualizar() {
+    event.preventDefault();
     var formulario = document.querySelector('.form-dados');
     var dados = document.querySelector('.dados-atuais');
     formulario.style.display = 'block';
     dados.style.display = 'none';
 }
 function cancelar() {
+    event.preventDefault();
     var formulario = document.querySelector('.form-dados');
     var dados = document.querySelector('.dados-atuais');
     formulario.style.display = 'none';
     dados.style.display = 'block';
 }
 function validarNome() {
+    event.preventDefault();
     var nome = document.querySelector('.nome').value;
     var regex = /^[A-Za-z]+$/;
 
@@ -64,6 +67,7 @@ function validarNome() {
     return true;
 }
 function validarSobrenome() {
+    event.preventDefault();
     var nome = document.querySelector('.sobrenome').value;
     var regex = /^[A-Za-z]+$/;
 
@@ -82,6 +86,38 @@ function validarSobrenome() {
 
 
 function cadastrar() {
+    event.preventDefault();
     validarNome();
     validarSobrenome();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var token = pegarCookie('token');
+    var cookie = "token="+token;
+
+    fetch('/dadosusuario', {
+        method: "GET",
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('nome-usuario').innerText = data.nome;
+        document.getElementById('email-usuario').innerText = data.email;
+        document.getElementById('cpf-usuario').innerText = data.cpf;
+    })
+    .catch(error => console.error('Erro ao obter dados do usuário: ', error));
+});
+
+function pegarCookie(name) {
+    var valorCookie = null;
+    if(document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                valorCookie = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return valorCookie;
 }
