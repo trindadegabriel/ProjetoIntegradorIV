@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => console.error('Erro ao obter dados do usuário: ', error));
 });
 
-function validarNome(){
+function validarNome(nome){
     var regex = /^[A-Za-z]+$/;
 
     if(nome === ""){
