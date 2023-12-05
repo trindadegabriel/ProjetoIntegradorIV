@@ -154,7 +154,7 @@ body {
     align-items: center;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4)
 }
-.selos-container{
+.container-selos{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
