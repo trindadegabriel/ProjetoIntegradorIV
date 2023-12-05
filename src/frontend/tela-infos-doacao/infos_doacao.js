@@ -59,3 +59,27 @@ function carregarGrafico(){
         barra.style.height = novaAltura;
     })
 }
+
+function calcularTempoProximaDoacao(dataProximaDoacao) {
+    const agora = new Date();
+    const proximaDoacao = new Date(dataProximaDoacao);
+    const diferenca = Math.abs(proximaDoacao - agora);
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+
+    return `${dias} dias, ${horas} horas e ${minutos} minutos`;
+}
+
+function sair() {
+    fetch('/sair', {
+        method: 'POST'
+    })
+    .then(() => {
+        window.location.href = "/tela-login/telalogin.html"
+    })
+    .catch(error => {
+        console.error('Erro ao sair da conta: ', error);
+    });
+}

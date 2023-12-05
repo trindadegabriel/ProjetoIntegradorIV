@@ -68,3 +68,32 @@ body {
 .sidebar > h2 {
     justify-self: center;
 }
+
+.btn-sair {
+    display: flex;
+    align-items: center;
+    border: none;
+    margin: 8px 0;
+    padding: 14px 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #FE251B;
+    font-weight: 400;
+    text-decoration: none;
+    
+    background-color: #FFE5D9;
+}
+
+.btn-sair:hover {
+    color: #FFE5D9;
+    background-color: #54B9CC;
+    transition: background-color 0.4s ease;
+    cursor: pointer;
+
+}
+
+.btn-sair img {
+    
+    width: 20px; /* Ajuste conforme necessário */
+    height: 20px; /* Ajuste conforme necessário */
+}

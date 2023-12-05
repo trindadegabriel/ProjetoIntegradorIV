@@ -146,7 +146,9 @@ function validarEmail(email){
 function validarSenha(senha){
     if(senha.length < 8){
         alert("Por favor, digite uma senha maior.")
+        return false;
     }
+    return true;
 }
 
 function validarTipoSanguineo(tipo){
@@ -161,6 +163,7 @@ function validarTipoSanguineo(tipo){
 }
 
 function validarFormulario(){
+    event.preventDefault();
     var nomeValido = validarNome(inputNomeAtt.value);
     var emailValido = validarEmail(inputEmailAtt.value);
     var novoEmailValido = validarEmail(inputNovoEmailAtt.value);
@@ -173,19 +176,14 @@ function validarFormulario(){
     }
 }
 
-inputNomeAtt.addEventListener('blur', validarNome);
-inputEmailAtt.addEventListener('blur', function () {
-    validarEmail(inputEmailAtt.value);
-});
-
-inputNovoEmailAtt.addEventListener('blur', function () {
-    validarEmail(inputNovoEmailAtt.value);
-});
-
-inputSenhaAtt.addEventListener('blur', function () {
-    validarSenha(inputSenhaAtt.value);
-});
-
-inputNovaSenhaAtt.addEventListener('blur', function () {
-    validarSenha(inputNovaSenhaAtt.value);
-});
+function sair() {
+    fetch('/sair', {
+        method: 'POST'
+    })
+    .then(() => {
+        window.location.href = "/tela-login/telalogin.html"
+    })
+    .catch(error => {
+        console.error('Erro ao sair da conta: ', error);
+    });
+}

@@ -95,6 +95,14 @@ public class Servidor {
                     }
                 }
                 if(partesRequisicao.length == 3 && partesRequisicao[0].equals("POST")){
+                    if(partesRequisicao[1].equals("/sair")){
+                        Map<String, Object> tokenInfo = verificarToken(input);
+                        String token = (String) tokenInfo.get("token");
+                        GerenciadorDeSessao.encerrarSessao(token);
+                        output.write("HTTP/1.1 302 Found\r\n".getBytes());
+                        output.write("Location: /tela-login/telalogin.html\r\n".getBytes());
+                        output.write("Content-Length: 0\r\n\r\n".getBytes());
+                    }
                     if(partesRequisicao[1].equals("/cadastrar")){
                         int contentLength = 0;
                         while(!(linhaRequisicao = input.readLine()).isEmpty()) {

@@ -17,3 +17,15 @@ document.getElementById('submit').addEventListener('click', function(event) {
         Swal.fire('Que pena!\nVocê está inelegível para doar sangue.');
     }
 });
+
+function sair() {
+    fetch('/sair', {
+        method: 'POST'
+    })
+    .then(() => {
+        window.location.href = "/tela-login/telalogin.html"
+    })
+    .catch(error => {
+        console.error('Erro ao sair da conta: ', error);
+    });
+}

@@ -93,17 +93,14 @@ function login() {
     });
 }
 
-function validarNome() {
-    event.preventDefault();
-    var nome = document.querySelector('.nome').value;
+function validarNome(nome){
     var regex = /^[A-Za-z]+$/;
 
-    if (nome === "") {
-        alert("Preencha os campos corretamente.");
+    if(nome === ""){
         return false;
     }
 
-    if (!regex.test(nome)) {
+    if(!regex.test(nome)){
         alert("Por favor, digite apenas letras no campo de nome.");
         return false;
     }
@@ -111,13 +108,61 @@ function validarNome() {
     return true;
 }
 
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g,'');    
+    if(cpf == '') return false; 
+    if (cpf.length != 11 || 
+        cpf == "00000000000" || 
+        cpf == "11111111111" || 
+        cpf == "22222222222" || 
+        cpf == "33333333333" || 
+        cpf == "44444444444" || 
+        cpf == "55555555555" || 
+        cpf == "66666666666" || 
+        cpf == "77777777777" || 
+        cpf == "88888888888" || 
+        cpf == "99999999999")
+            return false;       
+    add = 0;    
+    for (i=0; i < 9; i ++)       
+        add += parseInt(cpf.charAt(i)) * (10 - i);  
+        rev = 11 - (add % 11);  
+        if (rev == 10 || rev == 11)     
+            rev = 0;    
+        if (rev != parseInt(cpf.charAt(9)))     
+            return false;       
+    add = 0;    
+    for (i = 0; i < 10; i ++)        
+        add += parseInt(cpf.charAt(i)) * (11 - i);  
+    rev = 11 - (add % 11);  
+    if (rev == 10 || rev == 11) 
+        rev = 0;    
+    if (rev != parseInt(cpf.charAt(10)))
+        return false;       
+    return true;   
+}
+
 function validarEmail(email){
     var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email) && email.length > 10;
+
+    if(email === ""){
+        return false;
+    }
+
+    if(!regexEmail.test(email) && email.length < 10){
+        alert("Por favor, digite o email corretamente.");
+        return false;
+    }
+    
+    return true;
 }
 
 function validarSenha(senha){
-    return senha.length >= 8;
+    if(senha.length < 8){
+        alert("Por favor, digite uma senha maior.")
+        return false;
+    }
+    return true;
 }
 
 function validarTipoSanguineo(tipo){
@@ -127,37 +172,21 @@ function validarTipoSanguineo(tipo){
             return true;
         }
     }
+    alert("Por favor, digite um tipo sanguíneo valido.\nEx: AB+")
     return false;
 }
 
 function validarFormulario(){
-    var nomeValido = validarNome(inputNomeAtt.value);
-    var emailValido = validarEmail(inputEmailAtt.value);
-    var novoEmailValido = validarEmail(inputNovoEmailAtt.value);
-    var senhaValida = validarSenha(inputSenhaAtt.value);
-    var novaSenhaValida = validarSenha(inputNovaSenhaAtt.value);
-    var tipoValido = validarTipoSanguineo(inputTipoSangueAtt.value);
+    event.preventDefault();
+    var nomeValido = validarNome(inputNomeCad.value);
+    var cpfValido = validarCPF(inputCPFCad.value);
+    var emailValido = validarEmail(inputEmailCad.value);
+    var senhaValida = validarSenha(inputSenhaCad.value);
+    var tipoValido = validarTipoSanguineo(inputTipoSangueCad.value);
 
-    if(nomeValido && emailValido && novoEmailValido && senhaValida && novaSenhaValida && tipoValido){
+    if(nomeValido && cpfValido && emailValido && senhaValida && tipoValido){
         cadastrar();
     } else {
         alert("Preencha os campos corretamente.");
     }
 }
-
-inputNomeAtt.addEventListener('blur', validarNome);
-inputEmailAtt.addEventListener('blur', function () {
-    validarEmail(inputEmailAtt.value);
-});
-
-inputNovoEmailAtt.addEventListener('blur', function () {
-    validarEmail(inputNovoEmailAtt.value);
-});
-
-inputSenhaAtt.addEventListener('blur', function () {
-    validarSenha(inputSenhaAtt.value);
-});
-
-inputNovaSenhaAtt.addEventListener('blur', function () {
-    validarSenha(inputNovaSenhaAtt.value);
-});

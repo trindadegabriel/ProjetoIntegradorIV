@@ -500,3 +500,15 @@ function getEvents() {
 }
 
 var events = getEvents();
+
+function sair() {
+    fetch('/sair', {
+        method: 'POST'
+    })
+    .then(() => {
+        window.location.href = "/tela-login/telalogin.html"
+    })
+    .catch(error => {
+        console.error('Erro ao sair da conta: ', error);
+    });
+}

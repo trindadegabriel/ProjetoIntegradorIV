@@ -74,3 +74,15 @@ function initialize() {
 
 // inicializa o mapa quando termina de carregar a janela
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function sair() {
+    fetch('/sair', {
+        method: 'POST'
+    })
+    .then(() => {
+        window.location.href = "/tela-login/telalogin.html"
+    })
+    .catch(error => {
+        console.error('Erro ao sair da conta: ', error);
+    });
+}
