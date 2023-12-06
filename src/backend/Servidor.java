@@ -29,12 +29,29 @@ public class Servidor {
         try {
             while (true){
                 Socket socketCliente = socketServidor.accept();
-                processarRequisicao(socketCliente);
+                new Thread(new ClientHandler(socketCliente)).start();
             }
         } finally {
             socketServidor.close();
         }
     }
+
+    private static class ClientHandler implements Runnable {
+        private Socket socketCliente;
+
+        public ClientHandler(Socket socketCliente) {
+            this.socketCliente = socketCliente;
+        }
+
+    @Override
+    public void run() {
+        try {
+            processarRequisicao(socketCliente);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
     private static void processarRequisicao(Socket socketCliente) throws IOException {
         try (
